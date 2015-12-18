@@ -22,6 +22,19 @@
     <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</script>
+
 </head>
 
 <body>
@@ -47,27 +60,7 @@
 		
 			<div class="switch-btn">
 				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
+					
 					
 				</div>
 				<div class="tips-box hide">
@@ -75,8 +68,6 @@
 					<ul class="tips-inner">
 						<li>菜单</li>
 						<li>標籤</li>
-						
-						<li>友情链接</li>
 						
 						
 						<li>關於</li>
@@ -96,6 +87,8 @@
 				        
 							<li><a href="/archives">所有文章</a></li>
 				        
+							<li><a href="/关于我">关于我</a></li>
+				        
 						</ul>
 					</nav>
 					<nav class="header-nav">
@@ -105,7 +98,7 @@
 					        
 								<a class="weibo" target="_blank" href="http://weibo.com/p/1005053654795601/home" title="weibo">weibo</a>
 					        
-								<a class="csdn" target="_blank" href="http://blog.csdn.net/mobilexu" title="csdn">csdn</a>
+								<a class="mail" target="_blank" href="/1119117546@qq.com" title="mail">mail</a>
 					        
 						</div>
 					</nav>
@@ -114,24 +107,16 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/思想/" style="font-size: 10px;">思想</a>
 					</div>
 				</section>
 				
 				
 				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
-			        
-			        </div>
-				</section>
-				
 
 				
 				
-				<section class="switch-part switch-part4">
+				<section class="switch-part switch-part3">
 				
 					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
 				</section>
@@ -168,6 +153,8 @@
 		        
 					<li><a href="/archives">所有文章</a></li>
 		        
+					<li><a href="/关于我">关于我</a></li>
+		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -178,7 +165,7 @@
 			        
 						<a class="weibo" target="_blank" href="http://weibo.com/p/1005053654795601/home" title="weibo">weibo</a>
 			        
-						<a class="csdn" target="_blank" href="http://blog.csdn.net/mobilexu" title="csdn">csdn</a>
+						<a class="mail" target="_blank" href="/1119117546@qq.com" title="mail">mail</a>
 			        
 				</div>
 			</nav>
@@ -188,24 +175,22 @@
 
       <div class="body-wrap">
   
-    <article id="post-test1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2014-11-14-jie-jue-appcompat-v7-21-dot-0-0jian-rong-xing-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/18/test1/" class="article-date">
-  	<time datetime="2015-12-18T03:55:18.000Z" itemprop="datePublished">2015-12-18</time>
+      <a href="/2014/11/14/2014-11-14-jie-jue-appcompat-v7-21-dot-0-0jian-rong-xing-wen-ti/" class="article-date">
+  	<time datetime="2014-11-14T08:26:49.000Z" itemprop="datePublished">2014-11-14</time>
 </a>
     </div>
   
   <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/18/test1/">test1</a>
+      <a class="article-title" href="/2014/11/14/2014-11-14-jie-jue-appcompat-v7-21-dot-0-0jian-rong-xing-wen-ti/">解决AppCompat_v7:21.0.0兼容行问题</a>
     </h1>
   
 
@@ -214,13 +199,596 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>1.实现新的ActionBarDrawerToggle动画<br>ActionBarDrawerToggle使用最新的AppCompat_v7 21会出现一个很帅的动画，使用方式在Androidstudio下面先添加compile<br>[html] view plaincopyprint?在CODE上查看代码片派生到我的代码片<br>dependencies {<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])<br>    compile ‘com.android.support:appcompat-v7:21.0.0’<br>}  </p>
+<p>然后直接将ActionBarDrawerToggle的impot使用import android.support.v7.app.ActionBarDrawerToggle;<br>之后的构造方法就可以使用<br> mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);<br>当然需要一个ToolBar。</p>
+<p>2.使用ToolBar代替ActionBar<br>Android L添加了一个新控件来一步步的替换ActionBar，ToolBar有着更灵活的扩展，完全能够代替ActionBar，并且有着自己作为一个View的灵活性。只是有点不方便的是，ToolBar需要在每个Activity中声明，不管是在XML中或者代码<br>修改主题<br>[html] view plaincopyprint?在CODE上查看代码片派生到我的代码片</p>
+<p><resources><br>    <style name="AppTheme" parent="Theme.AppCompat"><br>        <!-- Customize your theme here. --><br>        <item name="windowActionBar">false</item><br>        <item name="android:windowNoTitle">true</item>  </p>
+<pre><code>    &lt;!-- Actionbar color --&gt;  
+    &lt;item name=&quot;colorPrimary&quot;&gt;@color/accent_material_dark&lt;/item&gt;  
+    &lt;!--Status bar color--&gt;  
+    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/accent_material_light&lt;/item&gt;  
+    &lt;!--Window color--&gt;  
+    &lt;item name=&quot;android:windowBackground&quot;&gt;@color/dim_foreground_material_dark&lt;/item&gt;  
+&lt;/style&gt;  
+</code></pre><p></resources><br>如果你原来使用ActionBarPullToRefresh控件这个时候会发现，进度条和底边有俩个dp的间隔，如果使用了ToolBar，那么你就可以控制ActionBar的高度，当然你可以修改ActionBarPullToRefresh源码来解决这个问题<br>布局中添加ToolBar<br>[html] view plaincopyprint?在CODE上查看代码片派生到我的代码片</p>
+<p>&lt;android.support.v7.widget.Toolbar<br>    android:id=”@+id/toolbar”<br>    android:layout_width=”match_parent”<br>    android:layout_height=”wrap_content”<br>    android:minHeight=”?attr/actionBarSize”<br>    android:background=”?attr/colorPrimary”  </p>
+<pre><code>&gt;&lt;/android.support.v7.widget.Toolbar&gt;  
+</code></pre><p>[java] view plaincopyprint?在CODE上查看代码片派生到我的代码片<br>Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);<br>setSupportActionBar(toolbar);  </p>
+<p>这样就得到了一个代替ActionBar的Toolbar，测试发现内部的Fragment getActionBar还是可以直接使用，因为在Activiyty中将ToolBar设置为了ActionBar，所以内部的Fragment 对ActionBar的操作完全可以和以前一样使用。当然也可以在fragment中设置自己的Toolbar。</p>
+<p>3.Actionbar的ListModel错位问题<br>ActionBar.NAVIGATION_MODE_LIST在替换了AppCompat 之后在4.x上显示会出现错位的情况，并且显示这个方法已经被废弃，如下图</p>
+<p>解决方案是使用TintSpinner代替Spinner，奇怪的是TintSpinner在官网竟然查不到相关的信息，当然它也在android.support.v7.internal.widget包中，打开看源码发现<br>[java] view plaincopyprint?在CODE上查看代码片派生到我的代码片<br>public class TintSpinner extends android.widget.Spinner {<br>    private static final int[] TINT_ATTRS;  </p>
+<pre><code>public TintSpinner(android.content.Context context) { /* compiled code */ }  
+
+public TintSpinner(android.content.Context context, android.util.AttributeSet attrs) { /* compiled code */ }  
+
+public TintSpinner(android.content.Context context, android.util.AttributeSet attrs, int defStyleAttr) { /* compiled code */ }  
+</code></pre><p>}  </p>
+<p>他继承Spinner，但是没有做任何的改动，好奇观，替换了之后确实解决了问题。</p>
+<p>4.待续。。。</p>
+</style></resources></p>
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/14/2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar/" class="article-date">
+  	<time datetime="2014-11-14T03:42:46.000Z" itemprop="datePublished">2014-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/14/2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar/">为什么要使用ToolBar代替ActionBar</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><em>ActionBar也是一种Toolbar，从API 21开始 Toolbar可以来替代ActionBar</em></li>
+<li><pre><code>A primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+Beginning with Android L (API level 21), the action bar may be represented by any Toolbar widget within the application layout. The application may signal to the Activity which Toolbar should be treated as the Activity&apos;s action bar. Activities that use this feature should use one of the supplied .NoActionBar themes, set the windowActionBar attribute to false or otherwise not request the window feature.
+</code></pre></li>
+</ul>
+<ul>
+<li><em>Toolbar可以使用setSupportActonBar()来作为actionbar使用，也可以使用在页面的任何地方作为一个View</em></li>
+</ul>
+<pre><code>A Toolbar is a generalization of action bars for use within application layouts. While an action bar is traditionally part of an Activity&apos;s opaque window decor controlled by the framework, a Toolbar may be placed at any arbitrary level of nesting within a view hierarchy. An application may choose to designate a Toolbar as the action bar for an Activity using the setSupportActionBar() method.
+</code></pre><h3 id="Toolbar__u7684_u7279_u70B9"><a href="#Toolbar__u7684_u7279_u70B9" class="headerlink" title="Toolbar 的特点"></a>Toolbar 的特点</h3><ul>
+<li>作为导航（使用appCompat v7 21.0.0 的ActionBarDrawerToggle 可以使用google的一个很有趣的动画） </li>
+</ul>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/98641-cfaa1e03385b3b8a.gif?imageView2/2/w/1240/q/100" alt=""></p>
+<pre><code>A navigation button. This may be an Up arrow, navigation menu toggle, close, collapse, done or another glyph of the app&apos;s choosing. This button should always be used to access other navigational destinations within the container of the Toolbar and its signified content or otherwise leave the current context signified by the Toolbar.
+</code></pre><p>-使用夸张的设计来彰显品牌，因为是一个customView，所有高度可以任意的设置</p>
+<p><img src="http://attach.bbs.miui.com/forum/201407/04/193328g5bqgbalqbq9aj9b.jpg" alt=""></p>
+<pre><code>A branded logo image. This may extend to the height of the bar and can be arbitrarily wide.
+</code></pre><ul>
+<li>显示标题和副标题</li>
+</ul>
+<pre><code>A title and subtitle. The title should be a signpost for the Toolbar&apos;s current position in the navigation hierarchy and the content contained there. The subtitle, if present should indicate any extended information about the current content. If an app uses a logo image it should strongly consider omitting a title and subtitle.
+</code></pre><ul>
+<li>任意的在Toolbar中添加子view，这也是他能代替actionBar的关键点</li>
+</ul>
+<pre><code>One or more custom views. The application may add arbitrary child views to the Toolbar. They will appear at this position within the layout. If a child view&apos;s Toolbar.LayoutParams indicates a Gravity value of CENTER_HORIZONTAL the view will attempt to center within the available space remaining in the Toolbar after all other elements have been measured.
+</code></pre><ul>
+<li>类似ActionBar menu的机制，多的话会几个小点</li>
+</ul>
+<pre><code>An action menu. The menu of actions will pin to the end of the Toolbar offering a few frequent, important or typical actions along with an optional overflow menu for additional actions.
+</code></pre><p>在布局中可以实现层叠的效果，很美妙哦，其实没有Toolbar之前这样的效果也很容易实现，但是Google的material design的推行，将这样的设计提升到了一个高度，形成了一种独特的风格，有种难言的简洁和抽象美</p>
+<pre><code>&lt;android.support.v7.widget.Toolbar
+  android:id=”@+id/my_awesome_toolbar”
+  android:layout_height=”wrap_content”
+  android:layout_width=”match_parent”
+  android:minHeight=”?attr/actionBarSize”
+  android:background=”?attr/colorPrimary” /&gt;
+</code></pre><p><img src="http://2.bp.blogspot.com/-opO8On-LSWU/VEgoMYJiAOI/AAAAAAAAA3I/i0eM6kUktkU/s1600/md.png" alt="">     </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-11-10-webviewhun-yao-de-shi-hou-de-zhu-yi" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/10/2014-11-10-webviewhun-yao-de-shi-hou-de-zhu-yi/" class="article-date">
+  	<time datetime="2014-11-10T15:01:08.000Z" itemprop="datePublished">2014-11-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/10/2014-11-10-webviewhun-yao-de-shi-hou-de-zhu-yi/">webView混淆的时候的注意</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在打release包的时候出现一个问题，打开应用就崩溃，但是debug包就没有这个问题，因为刚转到AndroidStudio下面还没有熟悉，所有很自然的想到哪里配置出了问题，折腾了一个小时，实在没辙了，就请教前辈，然后就被打脸了，我的问题是这样的</p>
+<pre><code>1.出现了这个的问题，怎么才能打出log尼，没有log我追踪不到这个问题
+2.debug包没有问题，release包有问题，难道是我的密码libsinger.so放错了？
+</code></pre><p>前辈是这样回答的：<br>你如果libsinger.so没有放错，密码也对的，那只有可能是打包配置的问题了，你先把build.gradle中的buildTypes-》release-》debuggable true</p>
+<p>照做了，打出了log，一看是出现了a(input…) 的log，一看就是混淆的问题，</p>
+<p>你是不是用了webview的js接口？</p>
+<p>对啊</p>
+<p>哦，那就知道了，你可能是混淆的时候把webview也混淆了，你怎么不看混淆配置的说明，巴拉巴拉。。</p>
+<p>我就郁闷了，混淆上面的</p>
+<pre><code>If your project uses WebView with JS, uncomment the following
+ and specify the fully qualified class name to the JavaScript interface
+ class:
+</code></pre><p>结果很明显了，就是这个问题，查了一下找到了解决方案</p>
+<pre><code>    把注释解除，把fqcn.of.javascript.interface.for.webview换成你自己定义的那个类名（包名也必须有，如果定义的是内部类，则是cn.wj.ui.WebViewActivity$myInterface），在4.1的系统上是没有问题了，但4.2的机子上还是不行，再找找，哦，原来是4.2以上版本调用js接口需要在方法使用声明@JavascriptInterface,然后混淆时可能会弄丢该声明导致，程序无法调用js，需要继续再配置文件中添加条件，
+
+-keepattributes *Annotation*
+-keepattributes *JavascriptInterface*
+</code></pre><p>混淆的实例：</p>
+<pre><code>-keepclassmembers class cn.xx.xx.Activity$AppAndroid {
+  public *;
+}
+
+-keepattributes *Annotation*
+-keepattributes *JavascriptInterface*
+</code></pre><p>对技术不求甚解，一直是我的老毛病，这样的细节，如果不碰到，我是自己看不到的，被打脸也是应该的。让我先哭会。。。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-11-10-framelayoutzhong-marginshe-zhi-wu-xiao-,jie-jue-ban-fa" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/10/2014-11-10-framelayoutzhong-marginshe-zhi-wu-xiao-,jie-jue-ban-fa/" class="article-date">
+  	<time datetime="2014-11-10T11:59:09.000Z" itemprop="datePublished">2014-11-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/10/2014-11-10-framelayoutzhong-marginshe-zhi-wu-xiao-,jie-jue-ban-fa/">FrameLayout中Margin设置无效，解决办法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天突然发现一个奇葩的问题，在3.0以下的手机中，在FrameLayout内部放了一个ListView，给ListView 设置了一个margin_Left,发现没有起作用，反而在右边出现了10dp的margin，实验了几次后发现，无论是margin_Left还是margin_Right都是在右边出现margin，俩个同时设置的时候发现还是叠加的显示在右边。</p>
+<p>解决方案：</p>
+<pre><code>在内部布局中设置 android:layout_gravity=&quot;top&quot;
+</code></pre><p>就可以解决2.x上兼容的问题</p>
+<p>想起来用RelativeLayout内部布局中设置布局也会出现MarginBottom设置无效的情况，必须在RelativeLayout中设置paddingBottom来代替。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-11-06-androidhe-jstong-xin-fang-an" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/06/2014-11-06-androidhe-jstong-xin-fang-an/" class="article-date">
+  	<time datetime="2014-11-05T16:04:05.000Z" itemprop="datePublished">2014-11-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/06/2014-11-06-androidhe-jstong-xin-fang-an/">Android和JS通信方案</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Android的webview中如果要想调用Javascript的接可以用            </p>
+<pre><code>WebView.loadUrl(&quot;javascript:onJsAndroid()&quot;);  
+</code></pre><p>在Javascript中调用Android的接口可以</p>
+<pre><code>mWebView.addJavascriptInterface(new function(),&quot;androd&quot;);  
+
+public class function(){
+        @JavascriptInterface
+        public void methodOne(){
+
+        }
+} 
+</code></pre><p>但是有点美中不足的是，Android调用js的方法获取不到返回值，网上关于这个问题的解决方案也有，但是要全平台的实现还是有风险的，所以需要一种解决方案来实现获取返回值。</p>
+<h4 id="u65B9_u6848_uFF1A"><a href="#u65B9_u6848_uFF1A" class="headerlink" title="方案："></a>方案：</h4><p>Android调用完js接口后，js再调用默认约定好的java接口，将值返回，这样有点hardcode的感觉，但是能解决问题，如果想更灵活，可以约定握手code，比如java调用接口的时候，传入一个时间戳，并hashmap保存到本地，当js调用java方法返回内容的时候将这个时间戳传回来，hashmap中查找到对应的时间戳，就可以知道是那个请求，并找到对应的处理。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-11-02-dreamlist" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/02/2014-11-02-dreamlist/" class="article-date">
+  	<time datetime="2014-11-01T16:21:46.000Z" itemprop="datePublished">2014-11-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/02/2014-11-02-dreamlist/">dreamList</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>无欲无求的人一种是大彻大悟，一直就是自暴自弃，作为屌丝，我有很多欲望，我想买很多东西，下面的几十年我一点一点的追求到。</p>
+<ul>
+<li>林肯MKC</li>
+</ul>
+<p><img src="http://car0.autoimg.cn/upload/2013/1/13/u_20130113151205595264.jpg" alt=""></p>
+<ul>
+<li>iPhone6</li>
+</ul>
+<p><img src="http://img.cnmo-img.com.cn/1147_500x375/1146285.jpg" alt=""></p>
+<ul>
+<li>ps3</li>
+</ul>
+<p><img src="http://himg2.huanqiu.com/attachment2010/2013/0222/20130222090048109.jpg" alt=""></p>
+<ul>
+<li>一套按自己想法装修的新房子</li>
+</ul>
+<p><img src="http://img.dazhuangwang.com/news/201202/20120217111604_30627.jpg" alt=""><br><img src="http://wenwen.soso.com/p/20100122/20100122171836-1050308307.jpg" alt=""></p>
+<ul>
+<li>一个好老婆</li>
+</ul>
+<p><img src="http://b131.photo.store.qq.com/psb?/V11xUatC4WpREw/w2WoX32dX4e1JCWCUY4Ubqp3.wb7cU1MNXHAexzW*MY!/b/dOc7Hk4*IgAA&amp;bo=4AGAAuABgAIBByA!&amp;rf=viewer_4" alt=""></p>
+<ul>
+<li>一家公司</li>
+</ul>
+<p><img src="http://www.lshyzs.net/pic/gif/20140419/201404191397920921968.jpg" alt=""></p>
+<p>待续。。。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/计划/">计划</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-10-28-ren-cai-de-xin-tai" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/28/2014-10-28-ren-cai-de-xin-tai/" class="article-date">
+  	<time datetime="2014-10-28T15:51:11.000Z" itemprop="datePublished">2014-10-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/28/2014-10-28-ren-cai-de-xin-tai/">人才的心态</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天产品经理和我反馈一个商家打印机链接不上的问题，我一看又是商家不会操作而瞎报上的来问题，就随口敷衍了一下，但是后来想想，我已经渐渐的变成了一个庸才，在公司这个大染缸里，觉得把新功能做好就可以，把需求满足了就可以，UED把交互和流程规定好，我就直接来实现，一旦习惯这个流程之后，我就没有了想法，变成了一只名副其实的程序猿。</p>
+<p>我突然会想，我做成什么样，会和现在得到不同的结果，打印机问题是一个长久以来都存在的问题，所有我重来没有想过把它彻底解决，好像没有其他人要想解决这个问题一样，生活中有很多这样的场景，一个问题搁置很久后就成了疑难杂症，大波平庸的人只会治标，这样的问题最终会成就一个人才，一个与众不同的人对待这个问题，会想别人没想过的方向，最终用一个不同的方案，成就自己。</p>
+<p>如果我从源码了解了蓝牙打印，写出可靠的智能链接，用户体验良好的切换模板，是不是会把这个问题变成优势尼？如果我遇到问题，都能用自己的思维思考，找到问题的根本所在，给出不同的方案，我的职业生涯和创业生涯会不会不同？</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/思想/">思想</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/" class="article-date">
+  	<time datetime="2014-10-24T10:41:24.000Z" itemprop="datePublished">2014-10-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/">自定义View在Android2.x上的坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自定义LinearLayout的时候有三个构造方法</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OrderDetailView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>(context);</span><br><span class="line">       init(context);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">OrderDetailView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>(context, attrs);</span><br><span class="line">       init(context);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">OrderDetailView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">       init(context);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>很常识的事情，但是如果你写成下面这样</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">OrderDetailView</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>(context,<span class="keyword">null</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">OrderDetailView</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>(context, attrs,<span class="number">0</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">OrderDetailView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">       init(context);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>在Android3.0以上没有任何问题，但是3.0以下奇怪的事情发生了，应用直接crash，查了发现,android2.x的sdk中没有三个参数的构造方法，如果用代码生成控件会调用一个参数的构造方法，用布局生成的控件会调用俩个参数的构造方法，三个参数的构造方法是3.0以上的系统在两个构造方法中主动调用才能执行的，这个坑踩过的人才会知道，没踩过的看到就不要踩了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+
+  
+    <article id="post-2014-10-19-无关生活" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/19/2014-10-19-无关生活/" class="article-date">
+  	<time datetime="2014-10-19T14:22:36.000Z" itemprop="datePublished">2014-10-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/19/2014-10-19-无关生活/">无关生活</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这俩天久违的没有加班，在家里做做饭，感受了一下清闲的生活，但是很快我发现自己已经没有办法闲下了，内心深处尽然感觉有种罪恶感。</p>
+<p><img src="http://digiphoto.techbang.com/system/images/20047/original/c6ff004e0adc432faf2b115596c1ea08.jpg?1367920498" alt=""></p>
+<p>最近的生活没有斗志，没有目的，就是上班而已，没有明确的计划，还没有跑步，哑铃，仰卧起坐，简直就是颓废的时期。1月份就准备和燕子定亲了，就是有老婆的人了，有点想她，但是由于工作的问题，她不能立马到我身边，有点遗憾。我怀疑我是不是需要来点心灵鸡汤刺激一下。</p>
+<p>跟我住一起的胖子是个没心没肺的人，整天看看电视剧，变着花样的玩，没有任何压力，每次我表现出羡慕的神色，他都说，不去想，就没有烦恼。这样的生活是我这样人不敢奢望的。这也是聪明人的活法，快快乐乐每一天。我现在的生活不能专注于技术，也不能专注于生活，更不能专注于创业。我要接受什么样的生活啊，会得到什么样的生活？</p>
+<p>忽然想到原来的几个好朋友已经渐行渐远，曾经一起挥斥方遒的谈着毕业后一起创业，一起干，但是现在却各奔东西，连聊天都搭不上话茬。不禁感叹自己长大了，已经到了一个小时候的我羡慕的年月，可以赚钱，可以娶老婆，可以发挥自己的光和热。但是现在自己的状态却很尴尬。</p>
+<p>今天公司的老总说我以后肯定能成大事，但是我自己一点希望都没有看到，我接触的是一团乱麻一样的创业经历，在我眼里现在所有的夸奖都是虚与委蛇。家里的情况不容乐观，爸爸找了一份我认为低三下四的工作，大哥晃荡晃荡还不知道干嘛，天天躲着我，找他也找不到，像个六神无主的落魄者，这是这个时代的悲哀还是他个人的悲哀。一个满心想干大事的心和自己不匹配的能力和见识结合下的人，是很难受的组合。年轻可以放荡，可以挥霍，可能是我太敏感，太功利，不愿意浪费一点点时间，太浮躁，急于成事，才导致了现在心态的焦躁。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思想/">思想</a></li></ul>
+	</div>
+
       
 
       
@@ -237,27 +805,25 @@
 
 
 
-
+  
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2014-10-12-guo-qing-de-qi-jian" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/18/hello-world/" class="article-date">
-  	<time datetime="2015-12-18T03:52:46.000Z" itemprop="datePublished">2015-12-18</time>
+      <a href="/2014/10/12/2014-10-12-guo-qing-de-qi-jian/" class="article-date">
+  	<time datetime="2014-10-12T05:08:17.000Z" itemprop="datePublished">2014-10-12</time>
 </a>
     </div>
   
   <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/18/hello-world/">Hello World</a>
+      <a class="article-title" href="/2014/10/12/2014-10-12-guo-qing-de-qi-jian/">国庆的期间</a>
     </h1>
   
 
@@ -266,15 +832,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>  周日来到公司，没几个人，想静下心研究点技术，但是突然想起好久没有写博客了，最近对技术没有什么特别的收获，一直在赶着项目，现在又来了俩个新同事，工作的压力应该减轻不少，但是不知道是福是祸，不管了，是福不是祸是祸躲不过。</p>
+<p>我能不能成为一个优秀的程序员？我自我感觉是很没自信的，这么多年的学习生活，让我把自己定位在了能够快速学习，但是都学的不深的位置上。不管是多难的技术，我很快就能学会怎么使用，有的甚至就是照葫芦画瓢的使用，但是一旦要研究一些东西就感觉力不从心了。公司现成的框架，我试着看了，但是发觉自己的能力实在是写不出来。尤其是最近工作很忙的情况下，我没有学到很多东西，而是快速的开发，对于自己这样不讲究的态度，我也很厌恶，但是我怎么才能成为别人心目中的大神级人物尼，在大神眼里我就是一个渣渣，每天也人模狗样的做着开发，但是分分钟都能找人把我代替了。</p>
+<p>我也尝试了研究一些东西，但是都研究的不是很透彻，甚至现在在我头脑里都是一团浆糊，怎么才能自信的跟大神讲解某个技术点，这是我下面要追求的东西，我承认自己是个平庸的开发人员，那是我一直没有把自己定位在开发这个位置上，但是我努力着提升我的技术。</p>
 
       
     </div>
@@ -283,6 +843,10 @@
       
       
       
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/思想/">思想</a>
+	</div>
+
 
       
       <div class="clearfix"></div>
@@ -298,9 +862,13 @@
 
 
 
-
+  
 
   
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
@@ -317,12 +885,10 @@
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
 
 <script>
 	var yiliaConfig = {
-		fancybox: true,
+		fancybox: false,
 		mathjax: true,
 		animate: true,
 		isHome: true,
@@ -337,19 +903,6 @@
 <script src="/js/main.js" type="text/javascript"></script>
 
 
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-50407096-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
 
 
 

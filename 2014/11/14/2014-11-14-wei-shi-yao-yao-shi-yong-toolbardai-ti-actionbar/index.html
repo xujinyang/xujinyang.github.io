@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>为什么要使用ToolBar代替ActionBar | 进击的小羊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ActionBar也是一种Toolbar，从API 21开始 Toolbar可以来替代ActionBar
+A primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么要使用ToolBar代替ActionBar">
+<meta property="og:url" content="http://xujinyang.github.io/2014/11/14/2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar/index.html">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="ActionBar也是一种Toolbar，从API 21开始 Toolbar可以来替代ActionBar
+A primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+B">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/98641-cfaa1e03385b3b8a.gif?imageView2/2/w/1240/q/100">
+<meta property="og:image" content="http://attach.bbs.miui.com/forum/201407/04/193328g5bqgbalqbq9aj9b.jpg">
+<meta property="og:image" content="http://2.bp.blogspot.com/-opO8On-LSWU/VEgoMYJiAOI/AAAAAAAAA3I/i0eM6kUktkU/s1600/md.png">
+<meta property="og:updated_time" content="2014-11-14T08:55:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么要使用ToolBar代替ActionBar">
+<meta name="twitter:description" content="ActionBar也是一种Toolbar，从API 21开始 Toolbar可以来替代ActionBar
+A primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+B">
+  
+    <link rel="alternative" href="/atom.xml" title="进击的小羊" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7o4zmy.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">许锦洋</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录心路历程</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/关于我">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xujinyang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005053654795601/home" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/1119117546@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/思想/" style="font-size: 10px;">思想</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">许锦洋</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7o4zmy.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">许锦洋</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录心路历程</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/关于我">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xujinyang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005053654795601/home" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/1119117546@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/14/2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar/" class="article-date">
+  	<time datetime="2014-11-14T03:42:46.000Z" itemprop="datePublished">2014-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      为什么要使用ToolBar代替ActionBar
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/技术/">技术</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><em>ActionBar也是一种Toolbar，从API 21开始 Toolbar可以来替代ActionBar</em></li>
+<li><pre><code>A primary toolbar within the activity that may display the activity title, application-level navigation affordances, and other interactive items.
+Beginning with Android L (API level 21), the action bar may be represented by any Toolbar widget within the application layout. The application may signal to the Activity which Toolbar should be treated as the Activity&apos;s action bar. Activities that use this feature should use one of the supplied .NoActionBar themes, set the windowActionBar attribute to false or otherwise not request the window feature.
+</code></pre></li>
+</ul>
+<ul>
+<li><em>Toolbar可以使用setSupportActonBar()来作为actionbar使用，也可以使用在页面的任何地方作为一个View</em></li>
+</ul>
+<pre><code>A Toolbar is a generalization of action bars for use within application layouts. While an action bar is traditionally part of an Activity&apos;s opaque window decor controlled by the framework, a Toolbar may be placed at any arbitrary level of nesting within a view hierarchy. An application may choose to designate a Toolbar as the action bar for an Activity using the setSupportActionBar() method.
+</code></pre><h3 id="Toolbar__u7684_u7279_u70B9"><a href="#Toolbar__u7684_u7279_u70B9" class="headerlink" title="Toolbar 的特点"></a>Toolbar 的特点</h3><ul>
+<li>作为导航（使用appCompat v7 21.0.0 的ActionBarDrawerToggle 可以使用google的一个很有趣的动画） </li>
+</ul>
+<p>  <img src="http://upload-images.jianshu.io/upload_images/98641-cfaa1e03385b3b8a.gif?imageView2/2/w/1240/q/100" alt=""></p>
+<pre><code>A navigation button. This may be an Up arrow, navigation menu toggle, close, collapse, done or another glyph of the app&apos;s choosing. This button should always be used to access other navigational destinations within the container of the Toolbar and its signified content or otherwise leave the current context signified by the Toolbar.
+</code></pre><p>-使用夸张的设计来彰显品牌，因为是一个customView，所有高度可以任意的设置</p>
+<p><img src="http://attach.bbs.miui.com/forum/201407/04/193328g5bqgbalqbq9aj9b.jpg" alt=""></p>
+<pre><code>A branded logo image. This may extend to the height of the bar and can be arbitrarily wide.
+</code></pre><ul>
+<li>显示标题和副标题</li>
+</ul>
+<pre><code>A title and subtitle. The title should be a signpost for the Toolbar&apos;s current position in the navigation hierarchy and the content contained there. The subtitle, if present should indicate any extended information about the current content. If an app uses a logo image it should strongly consider omitting a title and subtitle.
+</code></pre><ul>
+<li>任意的在Toolbar中添加子view，这也是他能代替actionBar的关键点</li>
+</ul>
+<pre><code>One or more custom views. The application may add arbitrary child views to the Toolbar. They will appear at this position within the layout. If a child view&apos;s Toolbar.LayoutParams indicates a Gravity value of CENTER_HORIZONTAL the view will attempt to center within the available space remaining in the Toolbar after all other elements have been measured.
+</code></pre><ul>
+<li>类似ActionBar menu的机制，多的话会几个小点</li>
+</ul>
+<pre><code>An action menu. The menu of actions will pin to the end of the Toolbar offering a few frequent, important or typical actions along with an optional overflow menu for additional actions.
+</code></pre><p>在布局中可以实现层叠的效果，很美妙哦，其实没有Toolbar之前这样的效果也很容易实现，但是Google的material design的推行，将这样的设计提升到了一个高度，形成了一种独特的风格，有种难言的简洁和抽象美</p>
+<pre><code>&lt;android.support.v7.widget.Toolbar
+  android:id=”@+id/my_awesome_toolbar”
+  android:layout_height=”wrap_content”
+  android:layout_width=”match_parent”
+  android:minHeight=”?attr/actionBarSize”
+  android:background=”?attr/colorPrimary” /&gt;
+</code></pre><p><img src="http://2.bp.blogspot.com/-opO8On-LSWU/VEgoMYJiAOI/AAAAAAAAA3I/i0eM6kUktkU/s1600/md.png" alt="">     </p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/14/2014-11-14-jie-jue-appcompat-v7-21-dot-0-0jian-rong-xing-wen-ti/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          解决AppCompat_v7:21.0.0兼容行问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/10/2014-11-10-webviewhun-yao-de-shi-hou-de-zhu-yi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webView混淆的时候的注意</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar" data-title="为什么要使用ToolBar代替ActionBar" data-url="http://xujinyang.github.io/2014/11/14/2014-11-14-wei-shi-yao-yao-shi-yong-toolbardai-ti-actionbar/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 许锦洋
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script>
+	var yiliaConfig = {
+		fancybox: false,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

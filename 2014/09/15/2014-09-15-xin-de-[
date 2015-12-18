@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>新的一天 | 进击的小羊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="公司培养一个新人的代价是巨大的，一个经验丰富的工程师是在不断的试错，不断的经历过程中成长起来的。在创业公司的满足感是公务员啊，银行职工啊之类的稳定工作的人体会不到的。每天用着自己公司提供的便利服务，真心感觉是件伟大的事情，一家应该存在的公司给社会创造了价值了，提供了创新的服务，整合了腐朽的资源，社会也必将给其巨大的馈赠。所以要干什么事业首先要想想，能给社会提供什么服务，是能有创新的产品模式，还是能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新的一天">
+<meta property="og:url" content="http://xujinyang.github.io/2014/09/15/2014-09-15-xin-de-[">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="公司培养一个新人的代价是巨大的，一个经验丰富的工程师是在不断的试错，不断的经历过程中成长起来的。在创业公司的满足感是公务员啊，银行职工啊之类的稳定工作的人体会不到的。每天用着自己公司提供的便利服务，真心感觉是件伟大的事情，一家应该存在的公司给社会创造了价值了，提供了创新的服务，整合了腐朽的资源，社会也必将给其巨大的馈赠。所以要干什么事业首先要想想，能给社会提供什么服务，是能有创新的产品模式，还是能">
+<meta property="og:updated_time" content="2014-09-15T06:33:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="新的一天">
+<meta name="twitter:description" content="公司培养一个新人的代价是巨大的，一个经验丰富的工程师是在不断的试错，不断的经历过程中成长起来的。在创业公司的满足感是公务员啊，银行职工啊之类的稳定工作的人体会不到的。每天用着自己公司提供的便利服务，真心感觉是件伟大的事情，一家应该存在的公司给社会创造了价值了，提供了创新的服务，整合了腐朽的资源，社会也必将给其巨大的馈赠。所以要干什么事业首先要想想，能给社会提供什么服务，是能有创新的产品模式，还是能">
+  
+    <link rel="alternative" href="/atom.xml" title="进击的小羊" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</script>
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7o4zmy.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">许锦洋</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">记录心路历程</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/关于我">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xujinyang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/p/1005053654795601/home" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="/1119117546@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/思想/" style="font-size: 10px;">思想</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">许锦洋</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7o4zmy.com1.z0.glb.clouddn.com/1.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">许锦洋</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">记录心路历程</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/关于我">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xujinyang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/p/1005053654795601/home" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="/1119117546@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2014-09-15-xin-de-[?]-tian" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/15/2014-09-15-xin-de-[?]-tian/" class="article-date">
+  	<time datetime="2014-09-15T06:30:11.000Z" itemprop="datePublished">2014-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      新的一天
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/思想/">思想</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>公司培养一个新人的代价是巨大的，一个经验丰富的工程师是在不断的试错，不断的经历过程中成长起来的。在创业公司的满足感是公务员啊，银行职工啊之类的稳定工作的人体会不到的。每天用着自己公司提供的便利服务，真心感觉是件伟大的事情，一家应该存在的公司给社会创造了价值了，提供了创新的服务，整合了腐朽的资源，社会也必将给其巨大的馈赠。所以要干什么事业首先要想想，能给社会提供什么服务，是能有创新的产品模式，还是能加快资源的周转，而不是怎么才能赚到钱。打工也是一样，每天想着能给公司提供什么价值，怎么才能让公司更好，把公司当做自己的公司来干，这不是每个人都能做到的，但是一旦做到了，那么公司回馈给他的肯定多的多，他学到的也肯定多的多。所有我还是要改变自己在没有实力情况下好高骛远的思想。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/09/16/2014-09-16-lu-wang-he-fang-?/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          路往何方？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/09/14/2014-09-14-xiang-de-kai-shi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">新的开始</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2014-09-15-xin-de-[?]-tian" data-title="新的一天" data-url="http://xujinyang.github.io/2014/09/15/2014-09-15-xin-de-[?]-tian/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 许锦洋
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script>
+	var yiliaConfig = {
+		fancybox: false,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
