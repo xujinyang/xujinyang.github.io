@@ -1,0 +1,919 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android React-Native" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="简介
+HTTPS(Secure Hypertext Transfer Protocol)安全超文本传输协议 它是一个安全通信通道，它基于HTTP开发，用于在客户计算机和服务器之间交换信息。它使用安全套接字层(SSL)进行信息交换，简单来说它是HTTP的安全版,是使用 TLS/SSL 加密的 HTTP 协议。
+HTTP 协议采用明文传输信息，存在信息窃听、信息篡改和信息劫持的风险，而协议 TLS/S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="想不通HTTPS如何校验证书合法性来看">
+<meta property="og:url" content="http://xujinyang.github.io/2016/06/15/想不通HTTPS如何校验证书合法性来看/index.html">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="简介
+HTTPS(Secure Hypertext Transfer Protocol)安全超文本传输协议 它是一个安全通信通道，它基于HTTP开发，用于在客户计算机和服务器之间交换信息。它使用安全套接字层(SSL)进行信息交换，简单来说它是HTTP的安全版,是使用 TLS/SSL 加密的 HTTP 协议。
+HTTP 协议采用明文传输信息，存在信息窃听、信息篡改和信息劫持的风险，而协议 TLS/S">
+<meta property="og:updated_time" content="2016-06-15T15:07:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="想不通HTTPS如何校验证书合法性来看">
+<meta name="twitter:description" content="简介
+HTTPS(Secure Hypertext Transfer Protocol)安全超文本传输协议 它是一个安全通信通道，它基于HTTP开发，用于在客户计算机和服务器之间交换信息。它使用安全套接字层(SSL)进行信息交换，简单来说它是HTTP的安全版,是使用 TLS/SSL 加密的 HTTP 协议。
+HTTP 协议采用明文传输信息，存在信息窃听、信息篡改和信息劫持的风险，而协议 TLS/S">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '5064259',
+      author: '许锦洋'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xujinyang.github.io/2016/06/15/想不通HTTPS如何校验证书合法性来看/"/>
+
+
+
+
+
+  <title> 想不通HTTPS如何校验证书合法性来看 | 进击的小羊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的小羊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">记录心路历程</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-history">
+          <a href="/history" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xujinyang.github.io/2016/06/15/想不通HTTPS如何校验证书合法性来看/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="进击的小羊">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/favicon.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="进击的小羊">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                想不通HTTPS如何校验证书合法性来看
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-15T21:32:18+08:00">
+                2016-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/15/想不通HTTPS如何校验证书合法性来看/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/想不通HTTPS如何校验证书合法性来看/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/15/想不通HTTPS如何校验证书合法性来看/" class="leancloud_visitors" data-flag-title="想不通HTTPS如何校验证书合法性来看">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>HTTPS(Secure Hypertext Transfer Protocol)安全超文本传输协议 它是一个安全通信通道，它基于HTTP开发，用于在客户计算机和服务器之间交换信息。它使用安全套接字层(SSL)进行信息交换，简单来说它是HTTP的安全版,是使用 TLS/SSL 加密的 HTTP 协议。</p>
+<p>HTTP 协议采用明文传输信息，存在信息窃听、信息篡改和信息劫持的风险，而协议 TLS/SSL 具有身份验证、信息加密和完整性校验的功能，可以避免此类问题。</p>
+<p>TLS/SSL 全称安全传输层协议 Transport Layer Security, 是介于 TCP 和 HTTP 之间的一层安全协议，不影响原有的 TCP 协议和 HTTP 协议，所以使用 HTTPS 基本上不需要对 HTTP 页面进行太多的改造。</p>
+</blockquote>
+<p><a href="http://p3.pstatp.com/large/11340/2279013629" target="_blank" rel="external"></a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>简单介绍了HTTPS,如果要补基础知识，<a href="http://toutiao.com/i6233969668336386562/?tt_from=weixin&amp;utm_campaign=client_share&amp;app=news_article_social&amp;utm_source=weixin&amp;iid=3450848787&amp;utm_medium=toutiao_ios&amp;wxshare_count=1" target="_blank" rel="external">看这里</a>,那么问题来了</p>
+<ol>
+<li>客户端是如何校验公钥证书合法性的?</li>
+<li>Https到底怎么来防止中间人攻击的（Man-in-the-middle attack，缩写：MITM）?</li>
+<li>客户端如果没有内置公钥可以使用HTTPS么？</li>
+<li>OkHttp如何配置HTTPS?</li>
+</ol>
+<p>一个一个问题来解析</p>
+<p>要解释这些问题，首先要知道Https握手时候使用的俩种加密方式。</p>
+<p><strong><em> 前提 非常重要的事情—加密方案中的加密算法都是公开的，而密钥是保密的,没有密钥就不能解密，有了密钥就能解密 </em></strong></p>
+<ul>
+<li><p>共享密钥加密</p>
+<p>  加密和解密同用一个密钥的方式，客户端和服务器得拥有同一个密钥，客户端使用密钥A加密，服务器使用密钥A解密。</p>
+<p>  缺点：如果攻击者也有了这个密钥既然共用同一个密钥，那么客户端肯定不能写死，或者存储密钥，那么服务器如何将密钥传输给客户端尼，哈哈，如果密钥能安全的传输，那么其他信息也可以安全传输，那就没Https什么事情了。</p>
+</li>
+<li><p>公开密钥加密<br>  公开密钥就避免了共享密钥的传输问题，因为顾名思义，他的密钥是公开的，他使用的是非对称加密，一个公开密钥，一个私有密钥，公钥公开，大家都可以拿到，私钥只有服务有一份。客户端使用公钥对内容进行加密，服务器使用私钥才能解密。这里有个前提，没有私钥的情况下要对加密进行解密，不是不可能，但是可以认为几乎不可能。</p>
+</li>
+</ul>
+<p>知道了这俩种加密方式，再来看客户端如何校验公钥证书合法性,如果出现了中间人攻击，中间替换了公钥证书，客户端是如何校验的？既然是合法性的问题，服务器和客户端俩个当事人谁说了都不算，由数字证书认证机构（CA,Certificate Authority）和其相关机构颁发的公开密钥证书说了算.</p>
+<pre><code>证书包含以下信息：申请者公钥、申请者的组织信息和个人信息、签发机构 CA 的信息、有效时间、证书序列号等信息的明文，同时包含一个签名；
+
+签名的产生算法：首先，使用散列函数计算公开的明文信息的信息摘要，然后，采用 CA 的私钥对信息摘要进行加密，密文即签名；
+</code></pre><p>客户端在对服务器say hello之后，服务器将公开密钥证书发送给客户端，注意这个证书里面包含了公钥+各种信息+签名（私钥对各种信息加密后生成签名），客户端收到公开密钥证书后，相当于收到了一个包裹里面有公钥+各种信息+签名，怎么样使用这三个数据来校验尼，很简单，公钥加密，私钥解，私钥加密公钥也可以解，只要利用公钥对签名进行解密，然后最和各种信息做比较就可以校验出证书的合法性。</p>
+<p>那么这里再推理几种情况能不能破解这个校验方案：</p>
+<h4 id="中间人攻击第一波，"><a href="#中间人攻击第一波，" class="headerlink" title="中间人攻击第一波，"></a>中间人攻击第一波，</h4><p>客户端say hello 后，被代理服务器拦截，然后他再向我们真正的服务器发相同的say hello，这时候服务器不知道你是谁，给了代理服务器公开密钥证书，然后代理服务器再把证书转发给客户端，客户端校验没毛病，然后用公钥加密的随机字符串发给代码服务器，这个时候代理服务器懵逼了，因为他没有私钥，解密不到随机字符串到底是什么，好吧，他虽然看不懂，但是还是把这一坨东西原封不动的给了服务器，服务器一看，没毛病，再把加密信息给代理服务器，代理服务器，因为不知道刚才的随机字符串是什么，而这个时候客户端和服务器已经不再使用公钥加密，而是使用了共享密钥加密，而关键的关键就是密钥就是刚才的随机字符串。代理服务器再次懵逼，就看数据来来回回，可是他看不懂，这样的中间人，只能算蠢萌的中转人，这也就是使用了HTTPS之后，packetCapture截取到的数据都是乱码的原因，关于这个可以<a href="http://xujinyang.github.io/2016/05/21/%E5%80%9F%E5%8A%A9Packet-Capture-%E5%AE%9E%E7%8E%B0%E6%97%A0Root%E6%8A%93%E8%AF%B7%E6%B1%82/">参考这里</a>。</p>
+<h4 id="中间人攻击第二波"><a href="#中间人攻击第二波" class="headerlink" title="中间人攻击第二波"></a>中间人攻击第二波</h4><p>客户端say hello 后，被代理服务器拦截，代理服务器也有CA颁发的证书，他把自己的合法证书发给客户端，客户端用证书里面的公钥解密签名之后，得到了各种信息，一看信息都对上了，没毛病信任。然后代理服务器宰相真正的服务器say hello，服务器下发真正的证书，代理服务器假装自己是客户端，信任了证书，然后校验通过，发用真正公钥加密后的随机数给服务器，服务器当然能解开，也就是代理服务器作为客户端和真正的服务器建立了合法的通信。再看客户端在校验了代理服务器自己的证书后也建立了合法的通信，这个时候，代理服务器作为中间人，因为他有自己的私钥和真正的公钥，可以欺上瞒下，俩边的信息都从它这里过了一次，信息被他偷窥到。攻击成功。</p>
+<h4 id="怎么防御？"><a href="#怎么防御？" class="headerlink" title="怎么防御？"></a>怎么防御？</h4><p>客户端内置真正的公钥，当代理服务器把它自己的证书传过来的时候，客户端用内置的公钥去解密证书中的签名，因为不是真正的私钥加密的所以解密失败，校验也就失败，连接中断。这也就是客户端信任所有的证书的风险—被中间人攻击。</p>
+<h4 id="那么代码怎么敲？"><a href="#那么代码怎么敲？" class="headerlink" title="那么代码怎么敲？"></a>那么代码怎么敲？</h4><p>如果你使用了OKHttp那就简单了看下面</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">          <span class="comment">//载入证书</span></div><div class="line">          SSLSocketFactory <span class="keyword">factory</span> = setCertificates(getAssets().open(<span class="string">"https.cer"</span>));</div><div class="line">          <span class="keyword">if</span> (<span class="keyword">factory</span> != <span class="keyword">null</span>) &#123;</div><div class="line">              httpClientBuilder.sslSocketFactory(<span class="keyword">factory</span>);</div><div class="line">          &#125;</div><div class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">          e.printStackTrace();</div><div class="line">      &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">    * 载入证书</div><div class="line">    */</div><div class="line">   <span class="keyword">private</span> SSLSocketFactory setCertificates(InputStream... certificates) &#123;</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           CertificateFactory certificateFactory = CertificateFactory.getInstance(<span class="string">"X.509"</span>);</div><div class="line">           KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());</div><div class="line">           keyStore.load(<span class="keyword">null</span>);</div><div class="line">           <span class="keyword">int</span> <span class="keyword">index</span> = <span class="number">0</span>;</div><div class="line">           <span class="keyword">for</span> (InputStream certificate : certificates) &#123;</div><div class="line">               String certificateAlias = Integer.toString(<span class="keyword">index</span>++);</div><div class="line">               keyStore.setCertificateEntry(certificateAlias, certificateFactory.generateCertificate(certificate));</div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   <span class="keyword">if</span> (certificate != <span class="keyword">null</span>) &#123;</div><div class="line">                       certificate.close();</div><div class="line">                   &#125;</div><div class="line">               &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                   e.printStackTrace();</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">           SSLContext sslContext = SSLContext.getInstance(<span class="string">"TLS"</span>);</div><div class="line">           TrustManagerFactory trustManagerFactory =</div><div class="line">                   TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());</div><div class="line">           trustManagerFactory.init(keyStore);</div><div class="line">           sslContext.init(</div><div class="line">                   <span class="keyword">null</span>,</div><div class="line">                   trustManagerFactory.getTrustManagers(),</div><div class="line">                   <span class="keyword">new</span> SecureRandom()</div><div class="line">           );</div><div class="line">           <span class="keyword">return</span> sslContext.getSocketFactory();</div><div class="line">       &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">           e.printStackTrace();</div><div class="line">           <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>解析到这里，想必大家也知道第三个问题的答案 ：客户端如果没有内置公钥可以使用HTTPS么？当然可以，只是不安全，会被MITM。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/13/AndFix-学到的东西/" rel="next" title="AndFix 学到的东西">
+                <i class="fa fa-chevron-left"></i> AndFix 学到的东西
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/16/众包的事业/" rel="prev" title="众包的事业">
+                众包的事业 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/15/想不通HTTPS如何校验证书合法性来看/"
+     data-title="想不通HTTPS如何校验证书合法性来看"
+     data-content=""
+     data-url="http://xujinyang.github.io/2016/06/15/想不通HTTPS如何校验证书合法性来看/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/15/想不通HTTPS如何校验证书合法性来看/"
+           data-title="想不通HTTPS如何校验证书合法性来看" data-url="http://xujinyang.github.io/2016/06/15/想不通HTTPS如何校验证书合法性来看/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/favicon.jpg"
+               alt="进击的小羊" />
+          <p class="site-author-name" itemprop="name">进击的小羊</p>
+          <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xujinyang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/mobilexu" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://stormzhang.com" title="段子张" target="_blank">段子张</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me" title="drakeet" target="_blank">drakeet</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna" title="任玉刚" target="_blank">任玉刚</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中间人攻击第一波，"><span class="nav-number">2.0.1.</span> <span class="nav-text">中间人攻击第一波，</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中间人攻击第二波"><span class="nav-number">2.0.2.</span> <span class="nav-text">中间人攻击第二波</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎么防御？"><span class="nav-number">2.0.3.</span> <span class="nav-text">怎么防御？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#那么代码怎么敲？"><span class="nav-number">2.0.4.</span> <span class="nav-text">那么代码怎么敲？</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的小羊</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jamesxu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tpRucnKN3U2P8GTfEalPGvAI-gzGzoHsz", "Ijb69YbG0OxD8a3ynDFupQ2M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

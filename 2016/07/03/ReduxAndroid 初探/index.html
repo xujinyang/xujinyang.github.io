@@ -1,0 +1,965 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Redux is a predictable state container for JavaScript apps                         Redux是 JavaScript 状态容器，提供可预测化的状态管理。
+
+Redux 文档开头就总结了Redux的意义。当然也非常详细的解释了Redux的三大原则和各模块作用，想入门请看Redux中文文档。
+当你已经理清楚了Acti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReduxAndroid 初探">
+<meta property="og:url" content="http://xujinyang.github.io/2016/07/03/ReduxAndroid 初探/index.html">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="Redux is a predictable state container for JavaScript apps                         Redux是 JavaScript 状态容器，提供可预测化的状态管理。
+
+Redux 文档开头就总结了Redux的意义。当然也非常详细的解释了Redux的三大原则和各模块作用，想入门请看Redux中文文档。
+当你已经理清楚了Acti">
+<meta property="og:image" content="http://7o4zmy.com1.z0.glb.clouddn.com/F9E7B181-7DE5-4EE6-88EF-34D03034AC46.png">
+<meta property="og:updated_time" content="2016-07-03T11:02:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ReduxAndroid 初探">
+<meta name="twitter:description" content="Redux is a predictable state container for JavaScript apps                         Redux是 JavaScript 状态容器，提供可预测化的状态管理。
+
+Redux 文档开头就总结了Redux的意义。当然也非常详细的解释了Redux的三大原则和各模块作用，想入门请看Redux中文文档。
+当你已经理清楚了Acti">
+<meta name="twitter:image" content="http://7o4zmy.com1.z0.glb.clouddn.com/F9E7B181-7DE5-4EE6-88EF-34D03034AC46.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '5064259',
+      author: '许锦洋'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xujinyang.github.io/2016/07/03/ReduxAndroid 初探/"/>
+
+
+
+
+
+  <title> ReduxAndroid 初探 | 进击的小羊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的小羊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">记录心路历程</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-history">
+          <a href="/history" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xujinyang.github.io/2016/07/03/ReduxAndroid 初探/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="进击的小羊">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/favicon.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="进击的小羊">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ReduxAndroid 初探
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-03T13:27:05+08:00">
+                2016-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/03/ReduxAndroid 初探/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/ReduxAndroid 初探/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/03/ReduxAndroid 初探/" class="leancloud_visitors" data-flag-title="ReduxAndroid 初探">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Redux is a predictable state container for JavaScript apps                         Redux是 JavaScript 状态容器，提供可预测化的状态管理。</p>
+</blockquote>
+<p>Redux 文档开头就总结了Redux的意义。当然也非常详细的解释了Redux的三大原则和各模块作用，想入门请看<a href="http://cn.redux.js.org/index.html" target="_blank" rel="external">Redux中文文档</a>。</p>
+<p>当你已经理清楚了Action，Reducer，Store直接的关系之后，你会有这样的疑问，Action怎么传递到Reducer中的？Reducer生成的新state又是怎么触发对应页面的刷新的？这个问题我也不想讲，因为这篇文章写的非常好-<a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a>,我其实想从Android开发者的角度谈一谈直接对Redux思想的理解和Redux for Android的尝试。</p>
+<h1 id="Redux-思想"><a href="#Redux-思想" class="headerlink" title="Redux 思想"></a>Redux 思想</h1><p>  Redux是应用状态管理服务，那么什么地方缺乏状态管理尼？比如React，它的UI以组件的形式嵌套在一起，数据状态从顶层传下，同级组件不能传递数据，组件触发回调，更新数据后，依然从上层同步下来，所以React和Redux配合简直了。这里其实就简单了描述了一个思想:</p>
+<pre><code>所有的UI刷新都交给数据来控制
+</code></pre><p>这个思想在我有限的开发经验中占很重要的地位。</p>
+<h3 id="借助一个问题解释这个思想"><a href="#借助一个问题解释这个思想" class="headerlink" title="借助一个问题解释这个思想"></a>借助一个问题解释这个思想</h3><ol>
+<li><p>在一个通知列表里面，标记一个通知已读，发生已读请求后，要刷新UI，你会怎么做？</p>
+<pre><code>可能你会在发送一个已读请求后，直接控制当前的ViewHolder显示为已读样式，这样有问题么？没有问题！
+</code></pre></li>
+<li><p>这个时候再加个需求，要更新外部一个页面当前的未读通知数目。</p>
+<pre><code>是不是有点懵逼，当然大神还是有方法，获取当前的未读数目，减去刚才标记已读的一个。ok 又解决了！
+</code></pre></li>
+<li><p>再加一个需求，当未读通知数目少于5个的时候，显示一个清空的按钮。</p>
+<pre><code>这个时候，你会发现，按照上面的思路，会写出很多零碎的逻辑，随着功能的增加，复杂度激增和可维护性降低,但是又隐约的感觉到之间共通的联系，那就是：都是经过一些操作之后，需要刷新UI，而UI显示的依据是上面？那就是【数据】。
+</code></pre></li>
+</ol>
+<p>那么我们换个思路再来推理一遍。   </p>
+<ol>
+<li><p>在一个通知列表里面，标记一个通知已读，发生已读请求后，要刷新UI，你会怎么做？</p>
+<pre><code>发送已读请求之后，修改通知list中对于的item已读状态为true,然后调用listAdapter.notifyDataSetChanged（）,更具最新的UI。
+</code></pre></li>
+<li><p>这个时候再加个需求，要更新外部一个页面当前的未读通知数目。</p>
+<pre><code>接着上面，改变list中的item已读状态之后，那么当前的未读通知数目就立马获取到了，这个时候把这个数目发送给外部的UI，让它更具这个数目刷新UI。
+</code></pre></li>
+<li><p>再加一个需求，当未读通知数目少于5个的时候，显示一个清空的按钮。</p>
+<pre><code>同样，改变list中的item已读状态之后,如果未读数目少于5个，显示出清空按钮，这就是个if else的问题。
+</code></pre></li>
+</ol>
+<p>感受一下，复杂度是不是立马降到了线性范围，原来三个或者更多的方法，现在就变成了改变数据，刷新UI这俩步。</p>
+<p>这和Redux有什么关系？来看一下react-redux中是如何实现上面的第一个问题的。</p>
+<h3 id="使用React-Redux解决这个问题"><a href="#使用React-Redux解决这个问题" class="headerlink" title="使用React-Redux解决这个问题"></a>使用React-Redux解决这个问题</h3><p>noticeView<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch(<span class="name">setRead</span>(<span class="name">noticeRead</span>, rowID, notice.noticeList))<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+<p>notionActionCreater</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//发送已读请求</span></div><div class="line">export <span class="function"><span class="keyword">function</span> <span class="title">setRead</span></span>(notice, rowID) &#123;</div><div class="line">	<span class="keyword">return</span> dispatch =&gt; &#123;</div><div class="line">			request(SET_READ + notice.id, <span class="string">'PUT'</span>)</div><div class="line">				.then((response) =&gt; &#123;</div><div class="line">					<span class="keyword">if</span> (response.code == <span class="number">0</span>) &#123;</div><div class="line">                    	<span class="comment">// 请求成功，修改list中的item的status 为已读 1</span></div><div class="line">						<span class="keyword">var</span> <span class="keyword">new</span><span class="type">Ds</span> = [];</div><div class="line">						<span class="keyword">new</span><span class="type">Ds</span> = dataSource.slice();</div><div class="line">						notice.status = <span class="number">1</span>;</div><div class="line">						<span class="keyword">var</span> changeNotice = Immutable.Map(notice);</div><div class="line">						<span class="keyword">new</span><span class="type">Ds</span>[rowID] = changeNotice.toObject();</div><div class="line">						dispatch(setNoticeRead(<span class="keyword">new</span><span class="type">Ds</span>));</div><div class="line">					&#125; <span class="keyword">else</span> &#123;</div><div class="line">						ToastShort(response.message);</div><div class="line">					&#125;</div><div class="line">				&#125;)</div><div class="line">				.<span class="keyword">catch</span>((error) =&gt; &#123;</div><div class="line">					<span class="keyword">if</span> (error != <span class="literal">null</span>) &#123;</div><div class="line">						ToastShort(error.message);</div><div class="line">					&#125;</div><div class="line">				&#125;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//ActionCreater 产生的Action 使用dispatch传给Reducers</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setNoticeRead</span></span>(noticeList) &#123;</div><div class="line">	<span class="keyword">return</span> &#123;</div><div class="line">		type: <span class="type">types</span>.SET_READ,</div><div class="line">		noticeList: <span class="type">noticeList</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>noticeReducer</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">const initialState = &#123;</div><div class="line">	isRefreshing: false,</div><div class="line">	loading: false,</div><div class="line">	noticeList: []</div><div class="line">&#125;</div><div class="line">//直接将copy改后的list返回，这个时候会调用view的render方法</div><div class="line">export <span class="keyword">default</span> function notice(<span class="keyword">state</span> = initialState, action) &#123;</div><div class="line">	switch (action.type) &#123;</div><div class="line">		case types.SET_READ:</div><div class="line">			return Object.assign(&#123;&#125;, <span class="keyword">state</span>, &#123;</div><div class="line">				noticeList: action.noticeList</div><div class="line">			&#125;);</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			return <span class="keyword">state</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>noticeView</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">renderNoticeItm(notice) &#123;</div><div class="line">		<span class="keyword">if</span> (notice.status == <span class="number">1</span>) &#123;</div><div class="line">			<span class="keyword">return</span> (</div><div class="line">					已读的<span class="keyword">View</span></div><div class="line">			)<span class="comment">;</span></div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> (</div><div class="line">					未读的<span class="keyword">View</span></div><div class="line">			)<span class="comment">;</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>这时候我们发现，Redux的三大部分Action、Reducer、及 Store中，</p>
+<ul>
+<li>Action负责获取原生数据，或者只是描述一种状态。</li>
+<li>Reducer 根据Action中的数据或者线索进行再处理，生成ViewModel。</li>
+<li>Store 就是联系Action和Reducers，State的纽带</li>
+</ul>
+<pre><code>这里为啥说state为viewModel,是因为state中不仅有noticelsit，还是有isRefreshing这样控制UI的变量。
+</code></pre><p>分析到这里，已经领略到了Redux架构的魅力，那么作为一名Android开发工程师，是不是可以把这个思想搬到Android上尼？</p>
+<h1 id="Redux-for-Android的尝试"><a href="#Redux-for-Android的尝试" class="headerlink" title="Redux for Android的尝试"></a>Redux for Android的尝试</h1><p>说干就干，这里模拟一个网络请求，先看效果。</p>
+<p><img src="http://7o4zmy.com1.z0.glb.clouddn.com/F9E7B181-7DE5-4EE6-88EF-34D03034AC46.png" alt=""></p>
+<h3 id="ReduxAndroid-library"><a href="#ReduxAndroid-library" class="headerlink" title="ReduxAndroid library"></a>ReduxAndroid library</h3><p>BaseReduxActivity 中使用Event来桥接View和state的改动，相当于 react-redux中的   connect<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * </div><div class="line"> * Created by mobilexu <span class="keyword">on</span> <span class="number">30</span>/<span class="number">6</span>/<span class="number">16</span>.</div><div class="line"> */</div><div class="line">public abstract class BaseReduxActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    public EventBus eventBus;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void <span class="keyword">on</span>Create(@Nullable Bundle savedInstanceState) &#123;</div><div class="line">        super.<span class="keyword">on</span>Create(savedInstanceState);</div><div class="line">        eventBus = EventBus.getDefault();</div><div class="line">        eventBus.register(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void <span class="keyword">on</span>Destroy() &#123;</div><div class="line">        super.<span class="keyword">on</span>Destroy();</div><div class="line">        eventBus.unregister(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 接收想要监听的状态变化</div><div class="line">     *</div><div class="line">     * @param <span class="keyword">state</span></div><div class="line">     */</div><div class="line">    public void <span class="keyword">on</span>Event(State <span class="keyword">state</span>) &#123;</div><div class="line">        <span class="keyword">on</span>StateChange(<span class="keyword">state</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    protected abstract void <span class="keyword">on</span>StateChange(State <span class="keyword">state</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Action中提供一个type，和一个string-&gt;Object的HashMap<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by mobilexu on 2/7/16.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> class Action &#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="built_in">int</span> type;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; hashMap;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getType() &#123;</div><div class="line">        <span class="keyword">return</span> type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> Action(<span class="built_in">int</span> type) &#123;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Action(<span class="built_in">int</span> type, <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; hashMap) &#123;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">        <span class="keyword">this</span>.hashMap = hashMap;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; appendHashParam(<span class="keyword">String</span> <span class="built_in">key</span>, <span class="keyword">Object</span> object) &#123;</div><div class="line">        <span class="keyword">if</span> (hashMap == <span class="keyword">null</span>) &#123;</div><div class="line">            hashMap = <span class="keyword">new</span> <span class="keyword">HashMap</span>&lt;&gt;();</div><div class="line">        &#125;</div><div class="line">        hashMap.put(<span class="built_in">key</span>, object);</div><div class="line">        <span class="keyword">return</span> hashMap;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">HashMap</span>&lt;<span class="keyword">String</span>, <span class="keyword">Object</span>&gt; getHashMap() &#123;</div><div class="line">        <span class="keyword">return</span> hashMap;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ActionCreater简单的提供一下dispatch方法<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by mobilexu on 3/7/16.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ActionCreater</span> &#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispatch</span>(<span class="params">Action action</span>) </span>&#123;</div><div class="line">        Store.getInstance().dispatch(action);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Reduce和State目前只是个接口<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by mobilexu on 2/7/16.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">Reduce</span> &#123;</div><div class="line">    <span class="function">State <span class="title">handleAction</span>(<span class="params">Action action</span>)</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by mobilexu on 2/7/16.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">State</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Store中提供了Reducer的注册和dispatch的真正实现，还有就是桥接了EventBus用于桥接view和state的改变<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by mobilexu on 2/7/16.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Store</span> &#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Store defaultInstance;</div><div class="line">    <span class="keyword">private</span> EventBus eventBus;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;Reduce&gt; reducers;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Store <span class="title">getInstance</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (defaultInstance == <span class="literal">null</span>) &#123;</div><div class="line">            synchronized (EventBus.class) &#123;</div><div class="line">                <span class="keyword">if</span> (defaultInstance == <span class="literal">null</span>) &#123;</div><div class="line">                    defaultInstance = <span class="keyword">new</span> Store();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> defaultInstance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Store</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        eventBus = EventBus.getDefault();</div><div class="line">        reducers = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 合并reduce</div><div class="line">     *</div><div class="line">     * @param reduceList</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">combineReducers</span>(<span class="params">Reduce... reduceList</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (Reduce reduce : reduceList) &#123;</div><div class="line">            reducers.<span class="keyword">add</span>(reduce);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 添加单个reduce</div><div class="line">     *</div><div class="line">     * @param reduce</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addReduce</span>(<span class="params">Reduce reduce</span>) </span>&#123;</div><div class="line">        reducers.<span class="keyword">add</span>(reduce);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 移除单个Reduce</div><div class="line">     *</div><div class="line">     * @param reduce</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeReduce</span>(<span class="params">Reduce reduce</span>) </span>&#123;</div><div class="line">        reducers.<span class="keyword">remove</span>(reduce);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 清空reducers</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clearAllReduce</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        reducers.clear();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发送一个Action</div><div class="line">     *</div><div class="line">     * @param action</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispatch</span>(<span class="params">Action action</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (Reduce reduce : reducers) &#123;</div><div class="line">            State localState = reduce.handleAction(action);</div><div class="line">            <span class="keyword">if</span> (localState != <span class="literal">null</span>) &#123;</div><div class="line">                eventBus.post(localState);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="ReduxAndroid实战使用"><a href="#ReduxAndroid实战使用" class="headerlink" title="ReduxAndroid实战使用"></a>ReduxAndroid实战使用</h3><p>Reducer可以在Application中统一添加，也可以在各种的页面添加。</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">public class SecondActivity extends BaseReduxActivity &#123;</div><div class="line"></div><div class="line">    private TextView ButtonTwo;</div><div class="line">    private SecondReduce reduce;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void <span class="keyword">on</span>Create(Bundle savedInstanceState) &#123;</div><div class="line">        super.<span class="keyword">on</span>Create(savedInstanceState);</div><div class="line">        <span class="built_in">set</span>ContentView(R.layout.activity_second);</div><div class="line">        ButtonTwo = (TextView) findViewById(R.id.buttonTwo);</div><div class="line">        init();</div><div class="line">        render(null);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void init() &#123;</div><div class="line">        reduce = new SecondReduce();</div><div class="line">        Store.getInstance().addReduce(reduce);</div><div class="line"></div><div class="line">        ButtonTwo.<span class="built_in">set</span>OnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void <span class="keyword">on</span>Click(View v) &#123;</div><div class="line">                new SecondActionCreater().changeText();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void render(SecondState <span class="keyword">state</span>) &#123;</div><div class="line">        if (<span class="keyword">state</span> == null)</div><div class="line">            return;</div><div class="line">        if (<span class="keyword">state</span>.isLoading()) &#123;</div><div class="line">            ButtonTwo.<span class="built_in">set</span>Text(<span class="string">"。。。"</span>);</div><div class="line">        &#125; else &#123;</div><div class="line">            ButtonTwo.<span class="built_in">set</span>Text(<span class="keyword">state</span>.getText());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void <span class="keyword">on</span>StateChange(State <span class="keyword">state</span>) &#123;</div><div class="line">        if (<span class="keyword">state</span> instanceof SecondState) &#123;</div><div class="line">            render((SecondState) <span class="keyword">state</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void <span class="keyword">on</span>Destroy() &#123;</div><div class="line">        super.<span class="keyword">on</span>Destroy();</div><div class="line">        Store.getInstance().removeReduce(reduce);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>SecondActionCreater模拟了一次类似网络请求的操作,发送了俩个Action出去<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondActionCreater</span> <span class="keyword">extends</span> <span class="title">ActionCreater</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeText</span><span class="params">()</span> </span>&#123;</div><div class="line">        dispatch(<span class="keyword">new</span> Action(SecondReduce.ACTION_SECOND_SHOWLOADING));</div><div class="line">        <span class="keyword">new</span> Handler().postDelayed(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                showText();</div><div class="line">            &#125;</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showText</span><span class="params">()</span> </span>&#123;</div><div class="line">        Action action = <span class="keyword">new</span> Action(SecondReduce.ACTION_SECOND_SHOWTEXT);</div><div class="line">        action.appendHashParam(<span class="string">"text"</span>, <span class="keyword">new</span> Random().nextInt(<span class="number">10</span>) + <span class="string">"文本"</span>);</div><div class="line">        dispatch(action);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>SecondReduce 收到Action之后，根据type对数据进行加工</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondReduce</span> <span class="keyword">implements</span> <span class="title">Reduce</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ACTION_SECOND_SHOWLOADING = <span class="number">3</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ACTION_SECOND_SHOWTEXT = <span class="number">4</span>;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> <span class="function">State <span class="title">handleAction</span><span class="params">(Action action)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (action.getType()) &#123;</div><div class="line">            <span class="keyword">case</span> ACTION_SECOND_SHOWLOADING:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> SecondState(<span class="keyword">true</span>, <span class="keyword">null</span>);</div><div class="line">            <span class="keyword">case</span> ACTION_SECOND_SHOWTEXT:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> SecondState(<span class="keyword">false</span>, action.getHashMap().<span class="keyword">get</span>(<span class="string">"text"</span>).toString());</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>SecondState 简直就是个ViewModle</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> SecondState implements State &#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isLoading;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">String</span> <span class="built_in">text</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> SecondState(<span class="keyword">boolean</span> isLoading, <span class="keyword">String</span> <span class="built_in">text</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.isLoading = isLoading;</div><div class="line">        <span class="keyword">this</span>.<span class="built_in">text</span> = <span class="built_in">text</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> isLoading() &#123;</div><div class="line">        <span class="built_in">return</span> isLoading;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setLoading(<span class="keyword">boolean</span> loading) &#123;</div><div class="line">        isLoading = loading;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">String</span> getText() &#123;</div><div class="line">        <span class="built_in">return</span> <span class="built_in">text</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setText(<span class="keyword">String</span> <span class="built_in">text</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.<span class="built_in">text</span> = <span class="built_in">text</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>整个过程，将操作都放在了SecondActionCreater 中，其实这个时候，ActionCreater就是MVP中的presenter，而Reducer就是生成ViewModle的过滤器，他不负责原始数据的采集，只是根据Action的描述，对数据进行一次加工,最后Reducer产生了一个State，通过EventBus维护的state和activity关系，进行了分发。</p>
+<p>机智的读者会发现，redux 建议只维护一个全局 state ，而上面的框架中state是分散的，这里我有这样的考虑，原始app和web开发不太相同，一个工具app，从打开使用到最后关闭，可能会遍历几十个页面，这个时候如果维护全局一个state,那么势必会有不要的性能开销，而且这里我也可以通过监听不同的state来实现特殊情况下的需求。</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   protected void <span class="keyword">on</span>StateChange(State <span class="keyword">state</span>) &#123;</div><div class="line">       if (<span class="keyword">state</span> instanceof ChangeTextState) &#123;</div><div class="line">           render((ChangeTextState) <span class="keyword">state</span>);</div><div class="line">       &#125; else if (<span class="keyword">state</span> instanceof SecondState) &#123;</div><div class="line">           renderSecond((SecondState) <span class="keyword">state</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>上面简单写了一个redux for Android的框架，源码可以<a href="https://github.com/xujinyang/ReduxAndroid" target="_blank" rel="external">这里</a>看到。</p>
+<h3 id="延申"><a href="#延申" class="headerlink" title="延申"></a>延申</h3><p>如果将ReduxAndroid和DataBinding结合，那么ActionCreater相当于Presenter,state相当于ViewModel,那这个架构就叫PVVM。</p>
+<p>猝不及防的吹了个牛逼，不要见怪。不过还是欢迎大家提pr。</p>
+<h3 id="参考的文章"><a href="#参考的文章" class="headerlink" title="参考的文章"></a>参考的文章</h3><p><a href="http://cn.redux.js.org/index.html" target="_blank" rel="external">Redux 中文文档</a></p>
+<p><a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a></p>
+<p><a href="http://blog.csdn.net/colorapp/article/details/50256913" target="_blank" rel="external">Redux学习笔记</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/19/SwipeRefreshLayout要点详解/" rel="next" title="SwipeRefreshLayout要点详解">
+                <i class="fa fa-chevron-left"></i> SwipeRefreshLayout要点详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/18/心有多大，公司就有多大/" rel="prev" title="珍爱生命，远离外包">
+                珍爱生命，远离外包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/03/ReduxAndroid 初探/"
+     data-title="ReduxAndroid 初探"
+     data-content=""
+     data-url="http://xujinyang.github.io/2016/07/03/ReduxAndroid 初探/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/03/ReduxAndroid 初探/"
+           data-title="ReduxAndroid 初探" data-url="http://xujinyang.github.io/2016/07/03/ReduxAndroid 初探/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/favicon.jpg"
+               alt="进击的小羊" />
+          <p class="site-author-name" itemprop="name">进击的小羊</p>
+          <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xujinyang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/mobilexu" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://stormzhang.com" title="段子张" target="_blank">段子张</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me" title="drakeet" target="_blank">drakeet</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna" title="任玉刚" target="_blank">任玉刚</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux-思想"><span class="nav-number">1.</span> <span class="nav-text">Redux 思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#借助一个问题解释这个思想"><span class="nav-number">1.0.1.</span> <span class="nav-text">借助一个问题解释这个思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用React-Redux解决这个问题"><span class="nav-number">1.0.2.</span> <span class="nav-text">使用React-Redux解决这个问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux-for-Android的尝试"><span class="nav-number">2.</span> <span class="nav-text">Redux for Android的尝试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReduxAndroid-library"><span class="nav-number">2.0.1.</span> <span class="nav-text">ReduxAndroid library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReduxAndroid实战使用"><span class="nav-number">2.0.2.</span> <span class="nav-text">ReduxAndroid实战使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#延申"><span class="nav-number">2.0.3.</span> <span class="nav-text">延申</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考的文章"><span class="nav-number">2.0.4.</span> <span class="nav-text">参考的文章</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的小羊</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jamesxu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tpRucnKN3U2P8GTfEalPGvAI-gzGzoHsz", "Ijb69YbG0OxD8a3ynDFupQ2M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,922 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="SwipRefreshLayout是google提供的support v4包下面的下拉刷新控件，他继承自ViewGroup,内部可以放几乎所有的滚动控件。This layout should be made the parent of the view that will be refreshed as a result of the gesture and can only support o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SwipeRefreshLayout要点详解">
+<meta property="og:url" content="http://xujinyang.github.io/2016/06/19/SwipeRefreshLayout要点详解/index.html">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="SwipRefreshLayout是google提供的support v4包下面的下拉刷新控件，他继承自ViewGroup,内部可以放几乎所有的滚动控件。This layout should be made the parent of the view that will be refreshed as a result of the gesture and can only support o">
+<meta property="og:image" content="https://camo.githubusercontent.com/568acac94970a1b71140832d377a3dd4912ebf9c/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313531303330323234313334353736">
+<meta property="og:image" content="https://github.com/recruit-lifestyle/WaveSwipeRefreshLayout/raw/master/sc/animation.gif">
+<meta property="og:image" content="https://github.com/alienjun/WaveRefreshForAndroid/raw/master/Sceenshots/screenshot2.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/4a98c58e7a20a4103eae24d67027472816be1e4b/68747470733a2f2f646e2d636f64696e672d6e65742d70726f64756374696f6e2d70702e71626f782e6d652f38646636643435382d373030622d346563352d623733312d6336623863333463646464632e706e67">
+<meta property="og:updated_time" content="2016-06-19T11:05:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SwipeRefreshLayout要点详解">
+<meta name="twitter:description" content="SwipRefreshLayout是google提供的support v4包下面的下拉刷新控件，他继承自ViewGroup,内部可以放几乎所有的滚动控件。This layout should be made the parent of the view that will be refreshed as a result of the gesture and can only support o">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/568acac94970a1b71140832d377a3dd4912ebf9c/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313531303330323234313334353736">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '5064259',
+      author: '许锦洋'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xujinyang.github.io/2016/06/19/SwipeRefreshLayout要点详解/"/>
+
+
+
+
+
+  <title> SwipeRefreshLayout要点详解 | 进击的小羊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的小羊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">记录心路历程</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-history">
+          <a href="/history" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xujinyang.github.io/2016/06/19/SwipeRefreshLayout要点详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="进击的小羊">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/favicon.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="进击的小羊">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SwipeRefreshLayout要点详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-19T14:02:14+08:00">
+                2016-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/19/SwipeRefreshLayout要点详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/19/SwipeRefreshLayout要点详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/19/SwipeRefreshLayout要点详解/" class="leancloud_visitors" data-flag-title="SwipeRefreshLayout要点详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>SwipRefreshLayout是google提供的support v4包下面的下拉刷新控件，他继承自ViewGroup,内部可以放几乎所有的滚动控件。This layout should be made the parent of the view that will be refreshed as a result of the gesture and can only support one direct child.</p>
+</blockquote>
+<p>本文不涉及到具体的使用，因为这个控件已经烂大街了，在很多标榜material design设计的app中都标配这个活泼的小球，在这样的情况下，出现了向美团，京东等，下拉出现更有趣动画的实现，比如</p>
+<p><img src="https://camo.githubusercontent.com/568acac94970a1b71140832d377a3dd4912ebf9c/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313531303330323234313334353736" alt="美团的下拉效果"></p>
+<p>recruit-lifestyle/WaveSwipeRefreshLayout水滴下拉刷新…</p>
+<p><img src="https://github.com/recruit-lifestyle/WaveSwipeRefreshLayout/raw/master/sc/animation.gif" alt=""></p>
+<p>WaveRefreshForAndroid这个是基于Android-PullToRefresh修改的而成的水波纹下拉刷新…可能作者主攻ios,所以ios的效果看起来好看点WaveRefresh…<br><img src="https://github.com/alienjun/WaveRefreshForAndroid/raw/master/Sceenshots/screenshot2.gif" alt=""></p>
+<p>我们会发现，他们好像各有各的炫酷狂拽吊炸天，但是有好像和亲兄弟一样，都是通过下拉动作，触发一系列的动画和动作。<br>下面就以他们的爹爹SwipRefreshLayout来分析他们是如何实现的，了解了原来，想在SwipRefreshLayout上定制一个自己的下拉库也就易如反掌了。</p>
+<h2 id="SwipRefreshLayout绘制"><a href="#SwipRefreshLayout绘制" class="headerlink" title="SwipRefreshLayout绘制"></a>SwipRefreshLayout绘制</h2><p>再炫的控件也是要继承基础的View，既然是继承ViewGroup，那么他肯定要实现下面俩个方法</p>
+<ul>
+<li>onMeasure</li>
+<li>onLayout</li>
+</ul>
+<p>找到对应的代码</p>
+<h3 id="onMeasure"><a href="#onMeasure" class="headerlink" title="onMeasure"></a>onMeasure</h3><p>其实SwipRefreshLayout中只有来个子View，一个是类似listview，还有个是它自己添加的circleView，在onMeasure中计算childView的测量值以及模式，以及设置自己的宽和高,</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   <span class="keyword">public</span> <span class="keyword">void</span> onMeasure(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec) &#123;</div><div class="line">       <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">     	<span class="comment">//判断内部控件是否是空，如果是空,就去找到，这里其实就是找mTarget=listview</span></div><div class="line">       <span class="keyword">if</span> (mTarget == <span class="keyword">null</span>) &#123;</div><div class="line">           ensureTarget();</div><div class="line">       &#125;</div><div class="line">       <span class="keyword">if</span> (mTarget == <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">return</span>;</div><div class="line">       &#125;</div><div class="line">     <span class="comment">//测量listview大小,去掉padding</span></div><div class="line">       mTarget.measure(MeasureSpec.makeMeasureSpec(</div><div class="line">               getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),</div><div class="line">               MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(</div><div class="line">               getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), MeasureSpec.EXACTLY));</div><div class="line">        <span class="comment">//测量小圆球大小,绝对大小</span></div><div class="line">      <span class="comment">//mCircleHeight = mCircleWidth = (int) (CIRCLE_DIAMETER_LARGE * metrics.density);</span></div><div class="line">    	<span class="comment">//mCircleHeight = mCircleWidth = (int) (CIRCLE_DIAMETER * metrics.density);</span></div><div class="line">       mCircleView.measure(MeasureSpec.makeMeasureSpec(mCircleWidth, MeasureSpec.EXACTLY),</div><div class="line">               MeasureSpec.makeMeasureSpec(mCircleHeight, MeasureSpec.EXACTLY));</div><div class="line">       <span class="comment">//mCurrentTargetOffsetTop 小圆球的上边Y轴坐标</span></div><div class="line">       <span class="keyword">if</span> (!mUsingCustomStart &amp;&amp; !mOriginalOffsetCalculated) &#123;</div><div class="line">           mOriginalOffsetCalculated = <span class="keyword">true</span>;</div><div class="line">           mCurrentTargetOffsetTop = mOriginalOffsetTop = -mCircleView.getMeasuredHeight();</div><div class="line">       &#125;</div><div class="line">       mCircleViewIndex = <span class="number">-1</span>;</div><div class="line">       <span class="comment">// Get the index of the circleview.</span></div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> <span class="keyword">index</span> = <span class="number">0</span>; <span class="keyword">index</span> &lt; getChildCount(); <span class="keyword">index</span>++) &#123;</div><div class="line">           <span class="keyword">if</span> (getChildAt(<span class="keyword">index</span>) == mCircleView) &#123;</div><div class="line">               mCircleViewIndex = <span class="keyword">index</span>;</div><div class="line">               <span class="keyword">break</span>;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="onLayout"><a href="#onLayout" class="headerlink" title="onLayout"></a>onLayout</h3><p>在onLayout中对子view固定位置，忽然想到，下拉的时候也就是位置在改变，所以每次重新绘制的时候，onlayout中肯定有一个变量，在决定着下拉的高度，仔细看下，果然有个变量mCurrentTargetOffsetTop，如果我们找到了这个变量的变化的触发方法，也就是找到了下拉刷新核心秘密。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line"><span class="keyword">protected</span> <span class="keyword">void</span> onLayout(<span class="built_in">boolean</span> changed, <span class="built_in">int</span> left, <span class="built_in">int</span> top, <span class="built_in">int</span> right, <span class="built_in">int</span> bottom) &#123;</div><div class="line"><span class="comment">//获取自己的宽高</span></div><div class="line">    <span class="keyword">final</span> <span class="built_in">int</span> <span class="built_in">width</span> = getMeasuredWidth();</div><div class="line">    <span class="keyword">final</span> <span class="built_in">int</span> <span class="built_in">height</span> = getMeasuredHeight();</div><div class="line">    <span class="keyword">if</span> (getChildCount() == <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//同样的代码，确定内部的view</span></div><div class="line">    <span class="keyword">if</span> (mTarget == <span class="keyword">null</span>) &#123;</div><div class="line">        ensureTarget();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (mTarget == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">  	<span class="comment">//这里感觉有点多余，childRight不就是width-getPaddingRight()么，老外的想法也真奇怪</span></div><div class="line">    <span class="keyword">final</span> View child = mTarget;</div><div class="line">    <span class="keyword">final</span> <span class="built_in">int</span> childLeft = getPaddingLeft();</div><div class="line">    <span class="keyword">final</span> <span class="built_in">int</span> childTop = getPaddingTop();</div><div class="line">    <span class="keyword">final</span> <span class="built_in">int</span> childWidth = <span class="built_in">width</span> - getPaddingLeft() - getPaddingRight();</div><div class="line">    <span class="keyword">final</span> <span class="built_in">int</span> childHeight = <span class="built_in">height</span> - getPaddingTop() - getPaddingBottom();</div><div class="line">    child.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);</div><div class="line">    <span class="built_in">int</span> circleWidth = mCircleView.getMeasuredWidth();</div><div class="line">    <span class="built_in">int</span> circleHeight = mCircleView.getMeasuredHeight();</div><div class="line">  	<span class="comment">//关键的一个参数，mCurrentTargetOffsetTop决定着小圆球下拉过程中的高度</span></div><div class="line">    mCircleView.layout((<span class="built_in">width</span> / <span class="number">2</span> - circleWidth / <span class="number">2</span>), mCurrentTargetOffsetTop,</div><div class="line">            (<span class="built_in">width</span> / <span class="number">2</span> + circleWidth / <span class="number">2</span>), mCurrentTargetOffsetTop + circleHeight);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>盗图来显示<br><img src="https://camo.githubusercontent.com/4a98c58e7a20a4103eae24d67027472816be1e4b/68747470733a2f2f646e2d636f64696e672d6e65742d70726f64756374696f6e2d70702e71626f782e6d652f38646636643435382d373030622d346563352d623733312d6336623863333463646464632e706e67" alt=""></p>
+<h2 id="View的事件分发"><a href="#View的事件分发" class="headerlink" title="View的事件分发"></a>View的事件分发</h2><p>View的绘制过程中俩个最重要的方法找到了，那么下面就是下拉过程中的事件分发了。先介绍一下事件分发最关键的几个点</p>
+<ul>
+<li>dispatchTouchEvent(MotionEvent ev)</li>
+<li>onInterceptTouchEvent(MotionEvent ev)</li>
+<li>onTouchEvent(MotionEvent ev)<br>这三者的关系我之前一直搞不清，最后在任玉刚的《Android开发艺术探索中》在看到下面这段代码才算明白，这是一段伟大的代码,简单几行，事件传递的奥义表达的淋漓尽致 。</li>
+</ul>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span>&#123;</div><div class="line">	<span class="keyword">boolean</span> consume=<span class="keyword">false</span>;</div><div class="line">        <span class="keyword">if</span>(onInterceptTouchEvent(ev))&#123;</div><div class="line">            consume=onTouchEvent(ev);</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            consume=child.dispatchTouchEvnet(ev);</div><div class="line">        &#125;</div><div class="line">  <span class="keyword">return</span> consume;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一个滑动事件传过来，首先SwipRefreshLayout在onInterceptTouchEvent中决定要不要拦截当前事件，如果不拦截就分发给listview，如果拦截那么它的onTouchEvent会处理对应的事件.</p>
+<h3 id="onInterceptTouchEvent"><a href="#onInterceptTouchEvent" class="headerlink" title="onInterceptTouchEvent"></a>onInterceptTouchEvent</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</div><div class="line">       ensureTarget();</div><div class="line">       <span class="keyword">final</span> <span class="keyword">int</span> action = MotionEventCompat.getActionMasked(ev);</div><div class="line">    	....</div><div class="line">   	一些边际情况判断</div><div class="line">   	....	</div><div class="line"></div><div class="line">       <span class="keyword">switch</span> (action) &#123;</div><div class="line">           <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</div><div class="line">               setTargetOffsetTopAndBottom(mOriginalOffsetTop - mCircleView.getTop(), <span class="keyword">true</span>);</div><div class="line">             	<span class="comment">//多指触摸的时候，获取第一个</span></div><div class="line">               mActivePointerId = MotionEventCompat.getPointerId(ev, <span class="number">0</span>);</div><div class="line">               mIsBeingDragged = <span class="keyword">false</span>;</div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> initialDownY = getMotionEventY(ev, mActivePointerId);</div><div class="line">               <span class="keyword">if</span> (initialDownY == <span class="number">-1</span>) &#123;</div><div class="line">                   <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">               &#125;</div><div class="line">			<span class="comment">//记录下按下的位置，老套路了</span></div><div class="line">               mInitialDownY = initialDownY;</div><div class="line">               <span class="keyword">break</span>;</div><div class="line"></div><div class="line">           <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> y = getMotionEventY(ev, mActivePointerId);</div><div class="line">               <span class="keyword">if</span> (y == <span class="number">-1</span>) &#123;</div><div class="line">                   <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">               &#125;</div><div class="line">			<span class="comment">//最后的位置，和按下的位置获取滑动距离yDiff</span></div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> yDiff = y - mInitialDownY;</div><div class="line">			<span class="comment">//滑动距离大于最小滑动距离时候拦截这个事件</span></div><div class="line">               <span class="keyword">if</span> (yDiff &gt; mTouchSlop &amp;&amp; !mIsBeingDragged) &#123;</div><div class="line">                   mInitialMotionY = mInitialDownY + mTouchSlop;</div><div class="line">                   mIsBeingDragged = <span class="keyword">true</span>;</div><div class="line">                   mProgress.setAlpha(STARTING_PROGRESS_ALPHA);</div><div class="line">               &#125;</div><div class="line">               <span class="keyword">break</span>;</div><div class="line"></div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">return</span> mIsBeingDragged;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="onTouchEvent"><a href="#onTouchEvent" class="headerlink" title="onTouchEvent"></a>onTouchEvent</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> onTouchEvent(MotionEvent ev) &#123;</div><div class="line">     </div><div class="line">	。。。</div><div class="line">       各种情况判断</div><div class="line">       。。。</div><div class="line">       <span class="keyword">switch</span> (action) &#123;</div><div class="line">           <span class="keyword">case</span> MotionEvent.<span class="string">ACTION_MOVE:</span> &#123;</div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> y = MotionEventCompat.getY(ev, pointerIndex);</div><div class="line">             	<span class="comment">//关键的来了，move事件传递到这里，当前Y-初始位置，再乘以阻尼系数.5f，得到一个距离overscrollTop，传到了moveSpinner中，那moveSpinner(overscrollTop)肯定就是触发滑动的关键方法了</span></div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> overscrollTop = (y - mInitialMotionY) * DRAG_RATE;</div><div class="line">               <span class="keyword">if</span> (mIsBeingDragged) &#123;</div><div class="line">                   <span class="keyword">if</span> (overscrollTop &gt; <span class="number">0</span>) &#123;</div><div class="line">                       moveSpinner(overscrollTop);</div><div class="line">                   &#125; <span class="keyword">else</span> &#123;</div><div class="line">                       <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                   &#125;</div><div class="line">               &#125;</div><div class="line">               <span class="keyword">break</span>;</div><div class="line">           &#125;</div><div class="line">           <span class="keyword">case</span> MotionEvent.<span class="string">ACTION_UP:</span> &#123;</div><div class="line">               pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);</div><div class="line">               <span class="keyword">if</span> (pointerIndex &lt; <span class="number">0</span>) &#123;</div><div class="line">                   Log.e(LOG_TAG, <span class="string">"Got ACTION_UP event but don't have an active pointer id."</span>);</div><div class="line">                   <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> y = MotionEventCompat.getY(ev, pointerIndex);</div><div class="line">               <span class="keyword">final</span> <span class="keyword">float</span> overscrollTop = (y - mInitialMotionY) * DRAG_RATE;</div><div class="line">               mIsBeingDragged = <span class="literal">false</span>;</div><div class="line">             	<span class="comment">//手指抬起来的时候，在finishSpinner中判断要触发刷新onRefresh还是显示个动画就弹回去</span></div><div class="line">               finishSpinner(overscrollTop);</div><div class="line">               mActivePointerId = INVALID_POINTER;</div><div class="line">               <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h3 id="moveSpinner"><a href="#moveSpinner" class="headerlink" title="moveSpinner"></a>moveSpinner</h3><p>这个方法，在各种计算之后，设置mCircleView的scale和alpha，然后又设置了圆球中间的mProgress的角度，并没有更新mCurrentTargetOffsetTop ,最后调用了setTargetOffsetTopAndBottom方法，接着看<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">private void moveSpinner(<span class="type">float</span> overscrollTop) &#123;</div><div class="line">    </div><div class="line">     <span class="comment">// where 1.0f is a full circle</span></div><div class="line">     if (mCircleView.getVisibility() != View.VISIBLE) &#123;</div><div class="line">         mCircleView.setVisibility(View.VISIBLE);</div><div class="line">     &#125;</div><div class="line">     if (!mScale) &#123;</div><div class="line">         ViewCompat.setScaleX(mCircleView, <span class="number">1</span>f);</div><div class="line">         ViewCompat.setScaleY(mCircleView, <span class="number">1</span>f);</div><div class="line">     &#125;</div><div class="line">    </div><div class="line">     <span class="type">float</span> strokeStart = adjustedPercent * <span class="number">.8</span>f;</div><div class="line">     mProgress.setStartEndTrim(<span class="number">0</span>f, Math.min(MAX_PROGRESS_ANGLE, strokeStart));</div><div class="line">     mProgress.setArrowScale(Math.min(<span class="number">1</span>f, adjustedPercent));</div><div class="line"></div><div class="line">     <span class="type">float</span> <span class="type">rotation</span> = (<span class="number">-0.25</span>f + <span class="number">.4</span>f * adjustedPercent + tensionPercent * <span class="number">2</span>) * <span class="number">.5</span>f;</div><div class="line">     mProgress.setProgressRotation(<span class="type">rotation</span>);</div><div class="line">     setTargetOffsetTopAndBottom(targetY - mCurrentTargetOffsetTop, true <span class="comment">/* requires update */</span>);</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="setTargetOffsetTopAndBottom"><a href="#setTargetOffsetTopAndBottom" class="headerlink" title="setTargetOffsetTopAndBottom"></a>setTargetOffsetTopAndBottom</h3><p>将mCircleView 显示出来，设置offset，也就是会触发mCircleView的ondraw，然后mCurrentTargetOffsetTop变量再次被赋值，如果api&lt;11的时候手动触发刷新,这样下一次SwipRefreshLayout执行 onMeasure和onLayout的时候，就知道circleview在哪里，多大。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">setTargetOffsetTopAndBottom</span><span class="params">(<span class="keyword">int</span> offset, <span class="keyword">boolean</span> requiresUpdate)</span> </span>&#123;</div><div class="line">       mCircleView.bringToFront();</div><div class="line">       mCircleView.offsetTopAndBottom(offset);</div><div class="line">       mCurrentTargetOffsetTop = mCircleView.getTop();</div><div class="line">       <span class="keyword">if</span> (requiresUpdate &amp;&amp; android.os.Build.VERSION.SDK_INT &lt; <span class="number">11</span>) &#123;</div><div class="line">           invalidate();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>MotionEvent重复下去，mCurrentTargetOffsetTop不断更新位置，SwipRefreshLayout不断的draw，小圆球跟着手指移动的动画就完成了。</p>
+<p>那么如果要自己定制这样的动画，怎么做？</p>
+<p>首先流程不变，circleView要换成自己要的View，moveSpinner方法要大改，子view根据overscrollTop，计算出百分百，阻尼，进度来等等数据一步一步的设置，ACTION_UP的时候，还有改造finishSpinner设置手指抬起的时候，View的显示逻辑.这样简单的定制就完成了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/16/众包的事业/" rel="next" title="众包的事业">
+                <i class="fa fa-chevron-left"></i> 众包的事业
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/03/ReduxAndroid 初探/" rel="prev" title="ReduxAndroid 初探">
+                ReduxAndroid 初探 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/19/SwipeRefreshLayout要点详解/"
+     data-title="SwipeRefreshLayout要点详解"
+     data-content=""
+     data-url="http://xujinyang.github.io/2016/06/19/SwipeRefreshLayout要点详解/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/19/SwipeRefreshLayout要点详解/"
+           data-title="SwipeRefreshLayout要点详解" data-url="http://xujinyang.github.io/2016/06/19/SwipeRefreshLayout要点详解/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/favicon.jpg"
+               alt="进击的小羊" />
+          <p class="site-author-name" itemprop="name">进击的小羊</p>
+          <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xujinyang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/mobilexu" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://stormzhang.com" title="段子张" target="_blank">段子张</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me" title="drakeet" target="_blank">drakeet</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna" title="任玉刚" target="_blank">任玉刚</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SwipRefreshLayout绘制"><span class="nav-number">1.</span> <span class="nav-text">SwipRefreshLayout绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onMeasure"><span class="nav-number">1.1.</span> <span class="nav-text">onMeasure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onLayout"><span class="nav-number">1.2.</span> <span class="nav-text">onLayout</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View的事件分发"><span class="nav-number">2.</span> <span class="nav-text">View的事件分发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onInterceptTouchEvent"><span class="nav-number">2.1.</span> <span class="nav-text">onInterceptTouchEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#onTouchEvent"><span class="nav-number">2.2.</span> <span class="nav-text">onTouchEvent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#moveSpinner"><span class="nav-number">2.3.</span> <span class="nav-text">moveSpinner</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setTargetOffsetTopAndBottom"><span class="nav-number">2.4.</span> <span class="nav-text">setTargetOffsetTopAndBottom</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的小羊</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jamesxu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tpRucnKN3U2P8GTfEalPGvAI-gzGzoHsz", "Ijb69YbG0OxD8a3ynDFupQ2M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react-native," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="问题是这样的，线上的Bugly爆出这样一个错误，而且延续了好多个版本，一直没有解决，崩溃次数已经上千次，因为刚看过RN源码所以斗胆尝试解决一下。
+
+Attached DialogModule to host with pending alert but no FragmentManager (not attached to an Activity).com.facebook.infer.annot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决React-Native bug:about DialogModule onHostResume">
+<meta property="og:url" content="http://xujinyang.github.io/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/index.html">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="问题是这样的，线上的Bugly爆出这样一个错误，而且延续了好多个版本，一直没有解决，崩溃次数已经上千次，因为刚看过RN源码所以斗胆尝试解决一下。
+
+Attached DialogModule to host with pending alert but no FragmentManager (not attached to an Activity).com.facebook.infer.annot">
+<meta property="og:updated_time" content="2016-09-13T11:43:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决React-Native bug:about DialogModule onHostResume">
+<meta name="twitter:description" content="问题是这样的，线上的Bugly爆出这样一个错误，而且延续了好多个版本，一直没有解决，崩溃次数已经上千次，因为刚看过RN源码所以斗胆尝试解决一下。
+
+Attached DialogModule to host with pending alert but no FragmentManager (not attached to an Activity).com.facebook.infer.annot">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '5064259',
+      author: '许锦洋'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xujinyang.github.io/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/"/>
+
+
+
+
+
+  <title> 解决React-Native bug:about DialogModule onHostResume | 进击的小羊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的小羊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">记录心路历程</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-history">
+          <a href="/history" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xujinyang.github.io/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="进击的小羊">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/favicon.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="进击的小羊">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                解决React-Native bug:about DialogModule onHostResume
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-09-13T18:45:49+08:00">
+                2016-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/" class="leancloud_visitors" data-flag-title="解决React-Native bug:about DialogModule onHostResume">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>问题是这样的，线上的Bugly爆出这样一个错误，而且延续了好多个版本，一直没有解决，崩溃次数已经上千次，因为刚看过RN源码所以斗胆尝试解决一下。</p>
+<blockquote>
+<p>Attached DialogModule to host with pending alert but no FragmentManager (not attached to an Activity).<br>com.facebook.infer.annotation.Assertions.java.lang.Object assertNotNull</p>
+</blockquote>
+<p>下面是问题的解决过程：</p>
+<h3 id="google"><a href="#google" class="headerlink" title="google"></a>google</h3><p>首先想到的是把这个报错扔到google里面看看，找到了有类似的错误，但是没有看到好的解决方案，比如这个<a href="https://github.com/facebook/react-native/issues/9018" target="_blank" rel="external">issue</a>这个哥们应该是中国的，还没有人回应。还有找到的stackoverflow<a href="http://stackoverflow.com/questions/35254232/react-native-maps-integration-issue-with-react-native-0-19-0" target="_blank" rel="external">上一个问题</a>有一个回答：</p>
+<pre><code>What does the rest of your activity look like? I ran into this but the problem was that I was not implementing DefaultHardwareBackBtnHandler in my activity.
+</code></pre><p>因为某种原因，我们的RN版本一直使用的是0.23，也就是自己实现的reactActivity，DefaultHardwareBackBtnHandler我们也是实现了的，这个回答也被排除了。</p>
+<p>那么网上找不到问题的解决方案也就没辙了，实际上上一次我尝试解决也是这样放弃的。</p>
+<h3 id="自己动手丰衣足食"><a href="#自己动手丰衣足食" class="headerlink" title="自己动手丰衣足食"></a>自己动手丰衣足食</h3><p>没办法崩溃的人越来越多，逼着要尽快解决,其实也挺快的。</p>
+<p>首先我找到了DialogModule.java，然后顺利的找到了报错的文本信息</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">DialogModule</span> <span class="keyword">extends</span> <span class="title">ReactContextBaseJavaModule</span> <span class="title">implements</span> <span class="title">LifecycleEventListener</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">FragmentManagerHelper</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  public void onHostResume() &#123;</div><div class="line">    mIsInForeground = <span class="literal">true</span>;</div><div class="line">    <span class="comment">// Check if a dialog has been created while the host was paused, so that we can show it now.</span></div><div class="line">    <span class="type">FragmentManagerHelper</span> fragmentManagerHelper = getFragmentManagerHelper();</div><div class="line">    <span class="type">Assertions</span>.assertNotNull(</div><div class="line">        fragmentManagerHelper,</div><div class="line">        <span class="string">"Attached DialogModule to host with pending alert but no FragmentManager "</span> +</div><div class="line">        <span class="string">"(not attached to an Activity)."</span>);</div><div class="line">    fragmentManagerHelper.showPendingAlert();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>报错信息完全对上了，意味着就是这个地方崩溃了的，那么接着就开始看onHostResume 方法在什么地方调用的。简单看了一下DialogModule实现了LifecycleEventListener 接口<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">LifecycleEventListener</span> &#123;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Called when host (activity/service) receives resume event (e.g. &#123;@link Activity#onResume&#125;</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onHostResume</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Called when host (activity/service) receives pause event (e.g. &#123;@link Activity#onPause&#125;</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onHostPause</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * Called when host (activity/service) receives destroy event (e.g. &#123;@link Activity#onDestroy&#125;</div><div class="line">   */</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">onHostDestroy</span>(<span class="params"></span>)</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>onHostResume 是生命周期中的一环，而且又是个接口，那么我开始怀疑Activity在执行onResume和他有某种关系。到BaseRNActivity.java(不用找了，这是我们自己写的一个类，这是Rn老版本的写法，现在直接使用ReactActivity就可以)</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onResume();</div><div class="line">       <span class="keyword">if</span> (mReactInstanceManager != <span class="keyword">null</span>) &#123;</div><div class="line">           mReactInstanceManager.onHostResume(<span class="keyword">this</span>, <span class="keyword">this</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>因为之前分析过RN的源码，所以很清楚的知道，mReactInstanceManager的实现都在ReactInstanceManagerImpl.java中， so 直接找到onHostResume</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onHostResume</span><span class="params">(Activity activity, DefaultHardwareBackBtnHandler defaultBackButtonImpl)</span> </span>&#123;</div><div class="line">  UiThreadUtil.assertOnUiThread();</div><div class="line"></div><div class="line">  mDefaultBackButtonImpl = defaultBackButtonImpl;</div><div class="line">  <span class="keyword">if</span> (mUseDeveloperSupport) &#123;</div><div class="line">    mDevSupportManager.setDevSupportEnabled(<span class="keyword">true</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  mCurrentActivity = activity;</div><div class="line">  moveToResumedLifecycleState(<span class="keyword">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码很简单，判断是不是在主线程，设置DevSupport，执行moveToResumedLifecycleState</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">void</span> <span class="title">moveToResumedLifecycleState</span><span class="params">(<span class="keyword">boolean</span> force)</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (mCurrentReactContext != <span class="keyword">null</span>) &#123;</div><div class="line">    <span class="comment">// we currently don't have an onCreate callback so we call onResume for both transitions</span></div><div class="line">    <span class="keyword">if</span> (force ||</div><div class="line">        mLifecycleState == LifecycleState.BEFORE_RESUME ||</div><div class="line">        mLifecycleState == LifecycleState.BEFORE_CREATE) &#123;</div><div class="line">      mCurrentReactContext.onHostResume(mCurrentActivity);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  mLifecycleState = LifecycleState.RESUMED;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>继续进onHostResume<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">void</span> onHostResume(<span class="meta">@Nullable</span> Activity activity) &#123;</div><div class="line">    UiThreadUtil.assertOnUiThread();</div><div class="line">    mCurrentActivity = <span class="keyword">new</span> WeakReference(activity);</div><div class="line">    <span class="keyword">for</span> (LifecycleEventListener <span class="string">listener :</span> mLifecycleEventListeners) &#123;</div><div class="line">      listener.onHostResume();</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>这里会然一笑，果然有个循环在执行这个LifecycleEventListener的onHostResume，到这里就不用再往下走了，我们已经确定了是在activity执行resume的时候，调用了DialogModule的onHostResume方法，这个时候fragmentManagerHelper为空照成了空指针错误。</p>
+<p>那fragmentManagerHelper 什么时候为空尼？？再回到DialogModle的onHostResume方法进去到<br>getFragmentManagerHelper</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="meta">@Nullable</span> <span class="function">FragmentManagerHelper <span class="title">getFragmentManagerHelper</span><span class="params">()</span> </span>&#123;</div><div class="line">    Activity activity = getCurrentActivity();</div><div class="line">    <span class="keyword">if</span> (activity == <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (activity <span class="keyword">instanceof</span> FragmentActivity) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> FragmentManagerHelper(((FragmentActivity) activity).getSupportFragmentManager());</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> FragmentManagerHelper(activity.getFragmentManager());</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>从代码可以看出，只有当activity为空的时候，才会出现返回null，那activity什么时候会null，再进去</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="meta">@Nullable</span> WeakReference&lt;Activity&gt; mCurrentActivity;</div><div class="line"></div><div class="line">Activity getCurrentActivity() &#123;</div><div class="line">    <span class="keyword">if</span> (mCurrentActivity == <span class="literal">null</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> mCurrentActivity.<span class="keyword">get</span>();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>原来mCurrentActivity是个WeakReference 弱引用，那么当系统垃圾回收的时候，就有可能为把它干掉了。</p>
+<p>接下来开始思考，什么情况下，会出现调用Activity的onResume的时候，WeakReference会为空，下面全是经验之谈了，要造回收的场景，首选就是打开开发者模式的-&gt;不保留活动，不保留活动是意思是:用户离开后既销毁每个活动，</p>
+<p>离开页面有三种情况：</p>
+<ol>
+<li>按back键</li>
+<li>按home </li>
+<li>切换到其他应用再切回来</li>
+</ol>
+<p>测试了一下，第一种情况，会正常的处理back逻辑，没有崩溃，第二第三种场景都成功复现了这个bug</p>
+<p>喜大普奔，<strong>复现了bug意味着bug解决了一半</strong></p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>解决问题很简单，只要在fragmentManagerHelper使用前判空就可以，但是DialogModule是系统自带的，要想修复这个问题，还需要自己写个DialogModule，有点太重了，因为我们使用的RN版本很老了，我就想看看最新的版本也没有解决这个问题，升级RN 版本到0.33</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"> <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onHostResume</span><span class="params">()</span> </span>&#123;</div><div class="line">   mIsInForeground = <span class="keyword">true</span>;</div><div class="line">   <span class="comment">// Check if a dialog has been created while the host was paused, so that we can show it now.</span></div><div class="line">   FragmentManagerHelper fragmentManagerHelper = getFragmentManagerHelper();</div><div class="line">   <span class="keyword">if</span> (fragmentManagerHelper != <span class="keyword">null</span>) &#123;</div><div class="line">     fragmentManagerHelper.showPendingAlert();</div><div class="line">   &#125; <span class="keyword">else</span> &#123;</div><div class="line">     FLog.w(DialogModule.class, <span class="string">"onHostResume called but no FragmentManager found"</span>);</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>果然，已经修复了 ，那我们只要升级Rn版本就可以了。react-native 更新的非常快，很多bug都可以通过升级版本来解决，当然这是在碰运气，你去看看RN的issues已经超过了1000,你遇到的bug，能不能在下个版本修复，上天保佑吧。</p>
+<p>通过这个bug的探索过程，我发现很多问题都是有迹可循的，只要我们耐心的分析，沉下心看源码。</p>
+<p>希望这个bolg能帮助到遇到这个坑的同学。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag"># react-native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/13/React-Native-jsx analyse2/" rel="next" title="React-Native 源码分析二-JSX如何渲染成原生页面(下)">
+                <i class="fa fa-chevron-left"></i> React-Native 源码分析二-JSX如何渲染成原生页面(下)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/14/中秋月未圆/" rel="prev" title="中秋月未圆">
+                中秋月未圆 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/"
+     data-title="解决React-Native bug:about DialogModule onHostResume"
+     data-content=""
+     data-url="http://xujinyang.github.io/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/"
+           data-title="解决React-Native bug:about DialogModule onHostResume" data-url="http://xujinyang.github.io/2016/09/13/解决React-Native-Attached-DialogModule-to-host-with-pending-alert-but-no-FragmentManager/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/favicon.jpg"
+               alt="进击的小羊" />
+          <p class="site-author-name" itemprop="name">进击的小羊</p>
+          <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xujinyang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/mobilexu" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://stormzhang.com" title="段子张" target="_blank">段子张</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me" title="drakeet" target="_blank">drakeet</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna" title="任玉刚" target="_blank">任玉刚</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#google"><span class="nav-number">1.</span> <span class="nav-text">google</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自己动手丰衣足食"><span class="nav-number">2.</span> <span class="nav-text">自己动手丰衣足食</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题"><span class="nav-number">3.</span> <span class="nav-text">解决问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的小羊</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jamesxu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tpRucnKN3U2P8GTfEalPGvAI-gzGzoHsz", "Ijb69YbG0OxD8a3ynDFupQ2M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

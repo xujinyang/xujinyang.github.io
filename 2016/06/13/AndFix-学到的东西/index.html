@@ -1,0 +1,924 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="AndFix已经使用了一段时间了，但是到AndFix上看了一下，最近2个月都没有更新代码了，有141个issues和3个pull request没人处理，其实AndFix的Contributors就俩个人，一个是rogerAce还有个是supern lee,虽然快要沦为了阿里的KPI项目，但是并不妨碍AndFix在业界的地位-一个低成本快速接入的Bugxiuf第一方案。
+第二方案Nuwa，Nuwa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndFix 学到的东西">
+<meta property="og:url" content="http://xujinyang.github.io/2016/06/13/AndFix-学到的东西/index.html">
+<meta property="og:site_name" content="进击的小羊">
+<meta property="og:description" content="AndFix已经使用了一段时间了，但是到AndFix上看了一下，最近2个月都没有更新代码了，有141个issues和3个pull request没人处理，其实AndFix的Contributors就俩个人，一个是rogerAce还有个是supern lee,虽然快要沦为了阿里的KPI项目，但是并不妨碍AndFix在业界的地位-一个低成本快速接入的Bugxiuf第一方案。
+第二方案Nuwa，Nuwa">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:updated_time" content="2016-06-13T15:09:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndFix 学到的东西">
+<meta name="twitter:description" content="AndFix已经使用了一段时间了，但是到AndFix上看了一下，最近2个月都没有更新代码了，有141个issues和3个pull request没人处理，其实AndFix的Contributors就俩个人，一个是rogerAce还有个是supern lee,虽然快要沦为了阿里的KPI项目，但是并不妨碍AndFix在业界的地位-一个低成本快速接入的Bugxiuf第一方案。
+第二方案Nuwa，Nuwa">
+<meta name="twitter:image" content="data:image/png;base64,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">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '5064259',
+      author: '许锦洋'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://xujinyang.github.io/2016/06/13/AndFix-学到的东西/"/>
+
+
+
+
+
+  <title> AndFix 学到的东西 | 进击的小羊 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9e90cf6fcfd1c901ddfc12cd9529d691";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">进击的小羊</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">记录心路历程</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-history">
+          <a href="/history" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://xujinyang.github.io/2016/06/13/AndFix-学到的东西/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="进击的小羊">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/favicon.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="进击的小羊">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AndFix 学到的东西
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-13T23:08:32+08:00">
+                2016-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/13/AndFix-学到的东西/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/AndFix-学到的东西/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/13/AndFix-学到的东西/" class="leancloud_visitors" data-flag-title="AndFix 学到的东西">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>AndFix已经使用了一段时间了，但是到<a href="https://github.com/alibaba/AndFix" target="_blank" rel="external">AndFix</a>上看了一下，最近2个月都没有更新代码了，有141个issues和3个pull request没人处理，其实AndFix的Contributors就俩个人，一个是<a href="https://github.com/lirenlong" target="_blank" rel="external">rogerAce</a>还有个是<a href="https://github.com/supern" target="_blank" rel="external">supern lee</a>,虽然快要沦为了阿里的KPI项目，但是并不妨碍AndFix在业界的地位-一个低成本快速接入的Bugxiuf第一方案。</p>
+<p>第二方案<a href="https://github.com/jasonross" target="_blank" rel="external">Nuwa</a>，Nuwa的原理是修改了gradle的编译task流程，替换dex的方式来实现。但是可惜的是gradle plugin在1.5以后取消了predexdebug这个task，而Nuwa恰恰是依赖这个task的，所以导致Nuwa在gradle plugin1.5版本后无法使用，而且Nuwa的作者是贾吉鑫也在一次技术分享的时候也表示，不再维护Nuwa，因为他感觉AndFix已经做的足够好，他不想把AndFix做的事情再做一次。</p>
+<p>闲话扯完，网上AndFix的教程和解析已经很多，这里就仅分享一下我在AndFix中学到的东西。</p>
+<h3 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> SortedSet&lt;Patch&gt; mPatchs;</div><div class="line"><span class="keyword">this</span>.mPatchs = <span class="keyword">new</span> ConcurrentSkipListSet();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>SortedSet是个接口，它里面的（只有TreeSet这一个实现可用）中的元素一定是有序的。<br> 保证迭代器按照元素递增顺序遍历的集合，可以按照元素的自然顺序（参见 Comparable）进行排序， 或者按照创建有序集合时提供的 Comparator进行排序。要采用此排序，</p>
+<p>ConcurrentSkipListSet（在JavaSE 6新增的）提供的功能类似于TreeSet，能够并发的访问有序的set。因为ConcurrentSkipListSet是基于“跳跃列表（skip list）”实现的，只要多个线程没有同时修改集合的同一个部分，那么在正常读、写集合的操作中不会出现竞争现象。</p>
+</blockquote>
+<p>mPatchs是一个有序并发Set,Set中的元素都必须实现 Comparable 接口,所以Patch实现了Comparable的compareTo方法,可见Patch是按照时间从小到大顺序<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> <span class="keyword">compareTo</span>(Patch another) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.mTime.<span class="keyword">compareTo</span>(another.getTime());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Patch生成"><a href="#Patch生成" class="headerlink" title="Patch生成"></a>Patch生成</h3><p>首先看一下Patch是什么？解压之后(<a href="http://www.cnblogs.com/soaringEveryday/p/5338214.html" target="_blank" rel="external">盗图</a>)</p>
+<p><img src="data:image/png;base64,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" alt=""></p>
+<p>meta-inf文件夹为：</p>
+<p><img src="data:image/png;base64,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" alt=""></p>
+<p>打开patch.mf文件可以发现两个apk的差异信息：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Manifest-Version</span>: 1<span class="selector-class">.0</span></div><div class="line"><span class="selector-tag">Patch-Name</span>: <span class="selector-tag">app-release-fix</span></div><div class="line"><span class="selector-tag">To-File</span>: <span class="selector-tag">app-release-online</span><span class="selector-class">.apk</span></div><div class="line"><span class="selector-tag">Created-Time</span>: 30 <span class="selector-tag">Mar</span> 2016 06<span class="selector-pseudo">:26</span><span class="selector-pseudo">:27</span> <span class="selector-tag">GMT</span></div><div class="line"><span class="selector-tag">Created-By</span>: 1<span class="selector-class">.0</span> (<span class="selector-tag">ApkPatch</span>)</div><div class="line"><span class="selector-tag">Patch-Classes</span>: <span class="selector-tag">com</span><span class="selector-class">.qianmi</span><span class="selector-class">.shine</span><span class="selector-class">.activity</span><span class="selector-class">.me</span><span class="selector-class">.AboutActivity_CF</span></div><div class="line"><span class="selector-tag">From-File</span>: <span class="selector-tag">app-release-fix</span><span class="selector-class">.apk</span></div></pre></td></tr></table></figure>
+<p>AndFix是如何把文件读取出来，并且初始化Patch的尼？Android大部分的文件都是压缩包，所以这里的处理也有一定的代表性。</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">void</span> init() <span class="keyword">throws</span> IOException &#123;</div><div class="line">      JarFile jarFile = <span class="keyword">null</span>;</div><div class="line">      InputStream inputStream = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">      <span class="keyword">try</span> &#123;</div><div class="line">          jarFile = <span class="keyword">new</span> JarFile(<span class="keyword">this</span>.mFile);</div><div class="line">          JarEntry entry = jarFile.getJarEntry(<span class="string">"META-INF/PATCH.MF"</span>);</div><div class="line">          inputStream = jarFile.getInputStream(entry);</div><div class="line">          Manifest manifest = <span class="keyword">new</span> Manifest(inputStream);</div><div class="line">          Attributes main = manifest.getMainAttributes();</div><div class="line">          <span class="keyword">this</span>.mName = main.getValue(<span class="string">"Patch-Name"</span>);</div><div class="line">          <span class="keyword">this</span>.mTime = <span class="keyword">new</span> Date(main.getValue(<span class="string">"Created-Time"</span>));</div><div class="line">          <span class="keyword">this</span>.mClassesMap = <span class="keyword">new</span> <span class="keyword">HashMap</span>();</div><div class="line">          Iterator it = main.keySet().iterator();</div><div class="line"></div><div class="line">          <span class="keyword">while</span>(it.hasNext()) &#123;</div><div class="line">              Name attrName = (Name)it.next();</div><div class="line">              <span class="keyword">String</span> name = attrName.toString();</div><div class="line">              <span class="keyword">if</span>(name.endsWith(<span class="string">"-Classes"</span>)) &#123;</div><div class="line">                  List strings = Arrays.asList(main.getValue(attrName).<span class="built_in">split</span>(<span class="string">","</span>));</div><div class="line">                  <span class="keyword">if</span>(name.equalsIgnoreCase(<span class="string">"Patch-Classes"</span>)) &#123;</div><div class="line">                      <span class="keyword">this</span>.mClassesMap.put(<span class="keyword">this</span>.mName, strings);</div><div class="line">                  &#125; <span class="keyword">else</span> &#123;</div><div class="line">                      <span class="keyword">this</span>.mClassesMap.put(name.<span class="built_in">trim</span>().substring(<span class="number">0</span>, name.length() - <span class="number">8</span>), strings);</div><div class="line">                  &#125;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125; <span class="keyword">finally</span> &#123;</div><div class="line">          <span class="keyword">if</span>(jarFile != <span class="keyword">null</span>) &#123;</div><div class="line">              jarFile.close();</div><div class="line">          &#125;</div><div class="line"></div><div class="line">          <span class="keyword">if</span>(inputStream != <span class="keyword">null</span>) &#123;</div><div class="line">              inputStream.close();</div><div class="line">          &#125;</div><div class="line"></div><div class="line">      &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>JarFile 类用于从任何可以使用 java.io.RandomAccessFile 打开的文件中读取 jar 文件的内容。它扩展了 java.util.zip.ZipFile 类，使之支持读取可选的 Manifest 条目。Manifest 可用于指定关于 jar 文件及其条目的元信息。</p>
+</blockquote>
+<p>这里使用了JarFile来解压.patch文件，然后找到META-INF/PATCH.MF 然后找到Patch-Classes，这样就可以取出里面被修复的类，当然这些类都是在原来的包名+CF，当真正修复的时候执行this.mAndFixManager.fix(patch.getFile(), cl, classes)方法，里面patch.getFile()里面是dex，classes里面是指定修复的类。</p>
+<h3 id="fix"><a href="#fix" class="headerlink" title="fix"></a>fix</h3><p>下面就是AndFix中最重要的一个方法了，核心的fix逻辑都在这里</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> fix(<span class="keyword">File</span> <span class="keyword">file</span>, ClassLoader classLoader, List&lt;String&gt; classes) &#123;</div><div class="line">       <span class="keyword">if</span>(<span class="keyword">this</span>.mSupport) &#123;</div><div class="line">           <span class="keyword">if</span>(<span class="keyword">this</span>.mSecurityChecker.verifyApk(<span class="keyword">file</span>)) &#123;</div><div class="line">               <span class="keyword">try</span> &#123;</div><div class="line">                   <span class="keyword">File</span> e = <span class="keyword">new</span> <span class="keyword">File</span>(<span class="keyword">this</span>.mOptDir, <span class="keyword">file</span>.getName());</div><div class="line">                   <span class="keyword">boolean</span> saveFingerprint = <span class="keyword">true</span>;</div><div class="line">                   <span class="keyword">if</span>(e.exists()) &#123;</div><div class="line">                       <span class="keyword">if</span>(<span class="keyword">this</span>.mSecurityChecker.verifyOpt(e)) &#123;</div><div class="line">                           saveFingerprint = <span class="keyword">false</span>;</div><div class="line">                       &#125; <span class="keyword">else</span> <span class="keyword">if</span>(!e.<span class="keyword">delete</span>()) &#123;</div><div class="line">                           <span class="keyword">return</span>;</div><div class="line">                       &#125;</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   DexFile dexFile = DexFile.loadDex(<span class="keyword">file</span>.getAbsolutePath(), e.getAbsolutePath(), <span class="number">0</span>);</div><div class="line">                 。。。</div><div class="line">                               clazz = dexFile.loadClass(entry, classLoader);</div><div class="line">			  。。。</div><div class="line">                                   <span class="keyword">this</span>.fixClass(clazz, classLoader);</div><div class="line">                       <span class="keyword">return</span>;</div><div class="line">                   &#125;</div><div class="line">               &#125; <span class="keyword">catch</span> (IOException var12) &#123;</div><div class="line">                   Log.e(<span class="string">"AndFixManager"</span>, <span class="string">"pacth"</span>, var12);</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>mSupport- 是否支持热更新修复，简单看了一下，就是不支持yunOS，sdk在8~23都可以。</p>
+<p>verifyApk- 对比一下签名信息，看dex是否合法,这里面的方法也很典型，自己写库的时候也可以用。</p>
+<p>verifyOpt- 获取file的md5值看是否改变过</p>
+<p>DexFile.loadDex</p>
+<blockquote>
+<p>打开一个DEX文件，并提供一个文件来保存优化过的DEX数据。如果优化过的格式已存在并且是最新的，就直接使用它。如果不是，虚拟机将试图重新创建一个。该方法主要用于应用希望在通常的应用安装机制之外下载和执行DEX文件。不能在应用里直接调用该方法，而应该通过一个类装载器例如dalvik.system.DexClassLoader.<br>关于动态加载可以看看<a href="http://blog.csdn.net/jiangwei0910410003/article/details/17679823" target="_blank" rel="external">扩展</a></p>
+</blockquote>
+<p>接下来就是找到带MethodReplace注解的方法，这个注解是在代码对比过程自动生成的，<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">MethodReplace methodReplace = (MethodReplace)<span class="function"><span class="keyword">method</span>.<span class="title">getAnnotation</span><span class="params">(MethodReplace.<span class="keyword">class</span>)</span>;</span></div><div class="line">          <span class="keyword">if</span>(methodReplace != null) <span class="comment">&#123;</span></div><div class="line">              String clz = methodReplace.clazz();</div><div class="line">              String meth = methodReplace.method();</div><div class="line">              if(!isEmpty(clz) &amp;&amp; !isEmpty(meth)) &#123;</div><div class="line">                  this.replaceMethod(classLoader, clz, meth, method);</div><div class="line">              &#125;</div><div class="line">          &#125;</div></pre></td></tr></table></figure></p>
+<p>replaceMethod传入的有class名字，方法的名字，方法本身,这样根据meth就有找到原来app中对应的方法<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">Method</span> <span class="title">src1</span> = <span class="title">clazz</span>.<span class="title">getDeclaredMethod</span><span class="params">(meth, <span class="keyword">method</span>.getParameterTypes()</span>);</span></div></pre></td></tr></table></figure></p>
+<p>一个有bug的方法，一个修复后的方法，一招乾坤大罗移，<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AndFix.addReplaceMethod(src1, <span class="function"><span class="keyword">method</span>);</span></div></pre></td></tr></table></figure></p>
+<p>为啥说是乾坤大罗移是因为AndFix在C的层面将源方法（meth）的各个属性被替换成了新的方法（target）的各个属性，就完成了方法的替换，当虚拟机误以为方法还是之前的“方法”。</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">extern void __attribute__ ((visibility (<span class="string">"hidden"</span>))) dalvik_replaceMethod(</div><div class="line">        JNIEnv* env, jobject src, jobject dest) &#123;</div><div class="line">    <span class="function"><span class="title">jobject</span> clazz = env-&gt;</span>CallObjectMethod(dest, jClassMethod);</div><div class="line">    ClassObject* clz = (ClassObject*) dvmDecodeIndirectRef_fnPtr(</div><div class="line">            dvmThreadSelf_fnPtr(), clazz);</div><div class="line">    <span class="function"><span class="title">clz</span>-&gt;</span>status = CLASS_INITIALIZED;</div><div class="line"></div><div class="line">    M<span class="function"><span class="title">ethod</span>* meth = (Method*) env-&gt;</span>FromReflectedMethod(src);</div><div class="line">    M<span class="function"><span class="title">ethod</span>* target = (Method*) env-&gt;</span>FromReflectedMethod(dest);</div><div class="line">    LOGD(<span class="string">"dalvikMethod: %s"</span>, <span class="function"><span class="title">meth</span>-&gt;</span><span class="keyword">name</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">clazz</span> = target-&gt;</span>clazz;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span>accessFlags |= ACC_PUBLIC;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">methodIndex</span> = target-&gt;</span>methodIndex;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">jniArgInfo</span> = target-&gt;</span>jniArgInfo;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">registersSize</span> = target-&gt;</span>registersSize;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">outsSize</span> = target-&gt;</span>outsSize;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">insSize</span> = target-&gt;</span>insSize;</div><div class="line"></div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">prototype</span> = target-&gt;</span>prototype;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">insns</span> = target-&gt;</span>insns;</div><div class="line">    <span class="function"><span class="title">meth</span>-&gt;</span><span class="function"><span class="title">nativeFunc</span> = target-&gt;</span>nativeFunc;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此，AndFix的整个过程就结束了，可见要完成这样的库，需要会写插件，NDK，还有对类的加载过程非常了解，最关键的是，从问题入手找解决方法的过程，试着想一下，如果你有了这些技术栈，现在需要解决动态修复的问题，你会怎么做？我可能会把整个类都替换掉，因为在我感觉中，一块代码的替换好像比一个类的替换要难，但是阿里的同学做到了。实在佩服佩服，也为阿里在开源届做的贡献点赞!!!!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/EventBus-核心要点解析/" rel="next" title="EventBus 核心要点解析">
+                <i class="fa fa-chevron-left"></i> EventBus 核心要点解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/15/想不通HTTPS如何校验证书合法性来看/" rel="prev" title="想不通HTTPS如何校验证书合法性来看">
+                想不通HTTPS如何校验证书合法性来看 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/06/13/AndFix-学到的东西/"
+     data-title="AndFix 学到的东西"
+     data-content=""
+     data-url="http://xujinyang.github.io/2016/06/13/AndFix-学到的东西/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/13/AndFix-学到的东西/"
+           data-title="AndFix 学到的东西" data-url="http://xujinyang.github.io/2016/06/13/AndFix-学到的东西/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/favicon.jpg"
+               alt="进击的小羊" />
+          <p class="site-author-name" itemprop="name">进击的小羊</p>
+          <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xujinyang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/mobilexu" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://stormzhang.com" title="段子张" target="_blank">段子张</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://drakeet.me" title="drakeet" target="_blank">drakeet</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/singwhatiwanna" title="任玉刚" target="_blank">任玉刚</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SortedSet"><span class="nav-number">1.</span> <span class="nav-text">SortedSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Patch生成"><span class="nav-number">2.</span> <span class="nav-text">Patch生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fix"><span class="nav-number">3.</span> <span class="nav-text">fix</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">进击的小羊</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"jamesxu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("tpRucnKN3U2P8GTfEalPGvAI-gzGzoHsz", "Ijb69YbG0OxD8a3ynDFupQ2M");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
