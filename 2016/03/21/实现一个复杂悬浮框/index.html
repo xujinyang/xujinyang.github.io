@@ -6,15 +6,15 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,47 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android React-Native" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Android React-Native">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="且看这次的背景，产品需要实现这样一个dialog
-
-考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体请看这在产品上是不能忍受的，所以又回到了dialog上。
-   先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和">
+<meta name="description" content="且看这次的背景，产品需要实现这样一个dialog  考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体请看这在产品上是不能忍受的，所以又回到了dialog上。    先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现一个复杂悬浮框">
 <meta property="og:url" content="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/index.html">
 <meta property="og:site_name" content="进击的小羊">
-<meta property="og:description" content="且看这次的背景，产品需要实现这样一个dialog
-
-考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体请看这在产品上是不能忍受的，所以又回到了dialog上。
-   先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和">
+<meta property="og:description" content="且看这次的背景，产品需要实现这样一个dialog  考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体请看这在产品上是不能忍受的，所以又回到了dialog上。    先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20160321225801489">
 <meta property="og:updated_time" content="2016-06-13T09:51:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现一个复杂悬浮框">
-<meta name="twitter:description" content="且看这次的背景，产品需要实现这样一个dialog
-
-考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体请看这在产品上是不能忍受的，所以又回到了dialog上。
-   先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和">
+<meta name="twitter:description" content="且看这次的背景，产品需要实现这样一个dialog  考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体请看这在产品上是不能忍受的，所以又回到了dialog上。    先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160321225801489">
 
 
@@ -132,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/"/>
+  <link rel="canonical" href="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/">
 
 
 
@@ -177,7 +169,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">进击的小羊</span>
       <span class="logo-line-after"><i></i></span>
@@ -206,7 +198,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -216,7 +208,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -226,7 +218,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -236,7 +228,7 @@
         <li class="menu-item menu-item-schedule">
           <a href="/schedule" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
             
             日程
           </a>
@@ -246,7 +238,7 @@
         <li class="menu-item menu-item-history">
           <a href="/history" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             作品
           </a>
@@ -256,7 +248,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -295,14 +287,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="进击的小羊">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="/favicon.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="进击的小羊">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src>
     </span>
   </span>
 
@@ -389,13 +381,13 @@
       
         <p>且看这次的背景，产品需要实现这样一个dialog</p>
 <p><img src="http://img.blog.csdn.net/20160321225801489" alt="这里写图片描述"></p>
-<p>考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体<a href="http://stackoverflow.com/questions/5600084/starting-an-activity-from-a-service-after-home-button-pressed-without-the-5-seco" target="_blank" rel="external">请看</a>这在产品上是不能忍受的，所以又回到了dialog上。</p>
-<p>   先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和魅族上，悬浮框的权限是被默认静止的，但是引导用户打开的成本太高，那怎么绕过权限申请尼？<a href="http://www.jianshu.com/p/167fd5f47d5c" target="_blank" rel="external">很幸运有人已经填平了这个坑</a></p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">               mFloatParams.<span class="keyword">type</span> <span class="type">= </span>LayoutParams.TYPE_TOAST;</div><div class="line">           &#125; <span class="keyword">else</span> &#123;</div><div class="line">               mFloatParams.<span class="keyword">type</span> <span class="type">= </span>LayoutParams.TYPE_PHONE;</div><div class="line">           &#125;</div></pre></td></tr></table></figure>
+<p>考虑到dialog中界面的复杂，使用dialog有点难以控制生命周期，所以我们想使用Activity来实现，但是实现了之后，发现了坑爹的事情，在按了home键之后在service中启动activity会有5秒钟的延时，具体<a href="http://stackoverflow.com/questions/5600084/starting-an-activity-from-a-service-after-home-button-pressed-without-the-5-seco" target="_blank" rel="noopener">请看</a>这在产品上是不能忍受的，所以又回到了dialog上。</p>
+<p>   先实现悬浮窗小圆球，这个不难，但是很快遇到了第一个坑，在小米和魅族上，悬浮框的权限是被默认静止的，但是引导用户打开的成本太高，那怎么绕过权限申请尼？<a href="http://www.jianshu.com/p/167fd5f47d5c" target="_blank" rel="noopener">很幸运有人已经填平了这个坑</a></p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">               mFloatParams.<span class="keyword">type</span> <span class="type">= </span>LayoutParams.TYPE_TOAST;</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               mFloatParams.<span class="keyword">type</span> <span class="type">= </span>LayoutParams.TYPE_PHONE;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
 <p>接着实现dialog页面，发现dialog的宽高显示不正常,其实代码是没有问题的</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public void setWindowsSize() &#123;</div><div class="line">       Window window = getWindow()<span class="comment">;</span></div><div class="line">       WindowManager.LayoutParams lp = window.getAttributes()<span class="comment">;</span></div><div class="line">       <span class="keyword">DisplayMetrics </span>dm = new <span class="keyword">DisplayMetrics();</span></div><div class="line">       ((WindowManager) getContext().getSystemService(<span class="built_in">Context</span>.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(dm)<span class="comment">;</span></div><div class="line">       int <span class="keyword">screenWidth </span>= dm.widthPixels<span class="comment">;</span></div><div class="line">       int <span class="keyword">screenHeight </span>= dm.heightPixels<span class="comment">;</span></div><div class="line">       lp.width = (int) (<span class="keyword">screenWidth </span>* <span class="number">0</span>.<span class="number">88</span>)<span class="comment">;</span></div><div class="line">       width = lp.width<span class="comment">;</span></div><div class="line">       lp.height = (int) (<span class="keyword">screenHeight </span>* <span class="number">0</span>.<span class="number">79</span>)<span class="comment">;</span></div><div class="line">       window.setAttributes(lp)<span class="comment">;</span></div><div class="line"></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWindowsSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       Window window = getWindow();</span><br><span class="line">       WindowManager.LayoutParams lp = window.getAttributes();</span><br><span class="line">       DisplayMetrics dm = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">       ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(dm);</span><br><span class="line">       <span class="keyword">int</span> screenWidth = dm.widthPixels;</span><br><span class="line">       <span class="keyword">int</span> screenHeight = dm.heightPixels;</span><br><span class="line">       lp.<span class="built_in">width</span> = (<span class="keyword">int</span>) (screenWidth * <span class="number">0.88</span>);</span><br><span class="line">       <span class="built_in">width</span> = lp.<span class="built_in">width</span>;</span><br><span class="line">       lp.<span class="built_in">height</span> = (<span class="keyword">int</span>) (screenHeight * <span class="number">0.79</span>);</span><br><span class="line">       window.setAttributes(lp);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>那为什么dialog的显示不正常尼..后来发现必须在dialog show（）之后再设置setWindowsSize（）才可以，具体原因未知，以后再细究.</p>
-<p>小圆圈悬浮窗和dialog都实现之后，就开始写轮询的逻辑了，我比较喜欢使用alarmManager，因为他是独立的RTC模块，不会因为应用休眠就停止运行，这时候遇到了第三个坑，就是在小米手机上，dialog还显示在前端，但是轮询接口却断开了网络的连接，因为之前吃过神隐模式的亏，所以我第一时间把锅定位在了神隐模式上，据我所知，神隐模式会在应用进入后台之后断开应用的网络，但是我这个dialog还显示在界面上，很明显因为我在dialog上设置了                            window.setType(WindowManager.LayoutParams.TYPE_TOAST)，所以导致系统判断应用已经处于后台，虽然界面上有个这么复杂的toast，那么解决方案也有了，要么将Dialog设置为TYPE_SYSTEM_ALERT，要么对照上一<a href="http://blog.csdn.net/mobilexu/article/details/50545523" target="_blank" rel="external">篇博客来处理神隐模式</a></p>
+<p>小圆圈悬浮窗和dialog都实现之后，就开始写轮询的逻辑了，我比较喜欢使用alarmManager，因为他是独立的RTC模块，不会因为应用休眠就停止运行，这时候遇到了第三个坑，就是在小米手机上，dialog还显示在前端，但是轮询接口却断开了网络的连接，因为之前吃过神隐模式的亏，所以我第一时间把锅定位在了神隐模式上，据我所知，神隐模式会在应用进入后台之后断开应用的网络，但是我这个dialog还显示在界面上，很明显因为我在dialog上设置了                            window.setType(WindowManager.LayoutParams.TYPE_TOAST)，所以导致系统判断应用已经处于后台，虽然界面上有个这么复杂的toast，那么解决方案也有了，要么将Dialog设置为TYPE_SYSTEM_ALERT，要么对照上一<a href="http://blog.csdn.net/mobilexu/article/details/50545523" target="_blank" rel="noopener">篇博客来处理神隐模式</a></p>
 <p>整个工程就是踩了这三个坑的过程中渡过，坑不打，但是也消耗了不少时间，Android开发至今，已经很少遇到踩不平的坑，更是很难遇到前人踩不平，我也踩不平的坑了，写这篇博客，主要是为了以后自己查找方便，如果能帮到踩坑中你，那也就功德圆满了。</p>
 
       
@@ -450,12 +442,9 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/03/21/实现一个复杂悬浮框/"
-     data-title="实现一个复杂悬浮框"
-     data-content=""
-     data-url="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/">
+        <div class="ds-share flat" data-thread-key="2016/03/21/实现一个复杂悬浮框/" data-title="实现一个复杂悬浮框" data-content data-url="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -480,8 +469,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/21/实现一个复杂悬浮框/"
-           data-title="实现一个复杂悬浮框" data-url="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/">
+      <div class="ds-thread" data-thread-key="2016/03/21/实现一个复杂悬浮框/" data-title="实现一个复杂悬浮框" data-url="http://xujinyang.github.io/2016/03/21/实现一个复杂悬浮框/">
       </div>
     
   </div>
@@ -508,9 +496,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/favicon.jpg"
-               alt="进击的小羊" />
+          <img class="site-author-image" itemprop="image" src="/favicon.jpg" alt="进击的小羊">
           <p class="site-author-name" itemprop="name">进击的小羊</p>
           <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
         </div>
@@ -519,7 +505,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -537,7 +523,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -616,10 +602,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Android,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="去年我和定位sdk打交道比较多，用过了腾讯定位，百度，现在换成了高德，说实话，腾讯的sdk在普通业务中还行，如果在重定位的o2o应用中，那么准确性，开发体验，文档api，耗电，耗流量方面都和百度，高德有点差距，腾讯最新的sdk没有体验，所以不知道现在如何。百度定位sdk，在api完善程度，电量，流量，精准度都和高德不相上下。下面来说一说，使用定位sdk稳定打点的体验。 这里说的稳定打点，是指相对稳">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android定位SDK稳定打点的实践">
 <meta property="og:url" content="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/index.html">
 <meta property="og:site_name" content="进击的小羊">
 <meta property="og:description" content="去年我和定位sdk打交道比较多，用过了腾讯定位，百度，现在换成了高德，说实话，腾讯的sdk在普通业务中还行，如果在重定位的o2o应用中，那么准确性，开发体验，文档api，耗电，耗流量方面都和百度，高德有点差距，腾讯最新的sdk没有体验，所以不知道现在如何。百度定位sdk，在api完善程度，电量，流量，精准度都和高德不相上下。下面来说一说，使用定位sdk稳定打点的体验。 这里说的稳定打点，是指相对稳">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload.chinaz.com/2015/0824/chinaz_39c52e9dea86298b4809d80ea7ac6b60.jpg">
 <meta property="og:updated_time" content="2016-06-13T09:51:34.000Z">
 <meta name="twitter:card" content="summary">
@@ -123,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/"/>
+  <link rel="canonical" href="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/">
 
 
 
@@ -168,7 +170,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">进击的小羊</span>
       <span class="logo-line-after"><i></i></span>
@@ -197,7 +199,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -207,7 +209,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -217,7 +219,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -227,7 +229,7 @@
         <li class="menu-item menu-item-schedule">
           <a href="/schedule" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
             
             日程
           </a>
@@ -237,7 +239,7 @@
         <li class="menu-item menu-item-history">
           <a href="/history" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             作品
           </a>
@@ -247,7 +249,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -286,14 +288,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="进击的小羊">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="/favicon.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="进击的小羊">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src>
     </span>
   </span>
 
@@ -379,8 +381,8 @@
 
       
         <pre><code>去年我和定位sdk打交道比较多，用过了腾讯定位，百度，现在换成了高德，说实话，腾讯的sdk在普通业务中还行，如果在重定位的o2o应用中，那么准确性，开发体验，文档api，耗电，耗流量方面都和百度，高德有点差距，腾讯最新的sdk没有体验，所以不知道现在如何。百度定位sdk，在api完善程度，电量，流量，精准度都和高德不相上下。下面来说一说，使用定位sdk稳定打点的体验。 这里说的稳定打点，是指相对稳定的间隔定位然后上传服务器。     
-</code></pre><p>大家如果用过定位的sdk都应该知道sdk默认有个轮询的方法，只要设置setInterval（n）这个方法，就可以每隔n毫秒定位一次。那么稳定打点的难度又在哪里尼？ 图样图深破。。。如果世间万物都按照我们设想那样，那么就没有那么多的烦恼。在这个问题上，国内众手机厂商有话要说。首先小米祭出了大杀器-<a href="http://www.chinaz.com/mobile/2015/0824/437808.shtml" target="_blank" rel="external">神隐模式</a>，听名字就感觉神神叨叨的。</p>
-<p>神隐模式在哪里？<br><img src="http://upload.chinaz.com/2015/0824/chinaz_39c52e9dea86298b4809d80ea7ac6b60.jpg" alt=""></p>
+</code></pre><p>大家如果用过定位的sdk都应该知道sdk默认有个轮询的方法，只要设置setInterval（n）这个方法，就可以每隔n毫秒定位一次。那么稳定打点的难度又在哪里尼？ 图样图深破。。。如果世间万物都按照我们设想那样，那么就没有那么多的烦恼。在这个问题上，国内众手机厂商有话要说。首先小米祭出了大杀器-<a href="http://www.chinaz.com/mobile/2015/0824/437808.shtml" target="_blank" rel="noopener">神隐模式</a>，听名字就感觉神神叨叨的。</p>
+<p>神隐模式在哪里？<br><img src="http://upload.chinaz.com/2015/0824/chinaz_39c52e9dea86298b4809d80ea7ac6b60.jpg" alt></p>
 <p>何为神隐模式？</p>
 <pre><code>神隐，顾名思义是隐藏起来，MIUI 7把一些耗电、耗流量的APP隐藏起来了。被加入在神隐模式列表中的应用，进入后台之后会禁止使用网络，禁止使用GPS，加强版的对齐唤醒等等。
 </code></pre><p>为什么要做神隐模式？</p>
@@ -460,12 +462,9 @@ ON_AFTER_RELEASE：设置了这个标志，当wakelock释放时用户activity计
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/19/Android定位SDK稳定打点的实践/"
-     data-title="Android定位SDK稳定打点的实践"
-     data-content=""
-     data-url="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/">
+        <div class="ds-share flat" data-thread-key="2016/01/19/Android定位SDK稳定打点的实践/" data-title="Android定位SDK稳定打点的实践" data-content data-url="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -490,8 +489,7 @@ ON_AFTER_RELEASE：设置了这个标志，当wakelock释放时用户activity计
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/19/Android定位SDK稳定打点的实践/"
-           data-title="Android定位SDK稳定打点的实践" data-url="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/">
+      <div class="ds-thread" data-thread-key="2016/01/19/Android定位SDK稳定打点的实践/" data-title="Android定位SDK稳定打点的实践" data-url="http://xujinyang.github.io/2016/01/19/Android定位SDK稳定打点的实践/">
       </div>
     
   </div>
@@ -518,9 +516,7 @@ ON_AFTER_RELEASE：设置了这个标志，当wakelock释放时用户activity计
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/favicon.jpg"
-               alt="进击的小羊" />
+          <img class="site-author-image" itemprop="image" src="/favicon.jpg" alt="进击的小羊">
           <p class="site-author-name" itemprop="name">进击的小羊</p>
           <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
         </div>
@@ -529,7 +525,7 @@ ON_AFTER_RELEASE：设置了这个标志，当wakelock释放时用户activity计
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -547,7 +543,7 @@ ON_AFTER_RELEASE：设置了这个标志，当wakelock释放时用户activity计
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -626,10 +622,10 @@ ON_AFTER_RELEASE：设置了这个标志，当wakelock释放时用户activity计
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

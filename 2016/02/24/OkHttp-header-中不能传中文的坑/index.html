@@ -6,15 +6,15 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,40 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android," />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Android,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="运营同事反馈说，有不止一个魅族用户说，登录不上我们的应用；我听到这个问题，很自信的回复他，肯定是用户的网络有问题，最多是后端的接口挂了，和app 没有关系。但是bugly上看了一下，突然发现有个bug
-IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$B">
+<meta name="description" content="运营同事反馈说，有不止一个魅族用户说，登录不上我们的应用；我听到这个问题，很自信的回复他，肯定是用户的网络有问题，最多是后端的接口挂了，和app 没有关系。但是bugly上看了一下，突然发现有个bug IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$B">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OkHttp header 中不能传中文的坑">
 <meta property="og:url" content="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/index.html">
 <meta property="og:site_name" content="进击的小羊">
-<meta property="og:description" content="运营同事反馈说，有不止一个魅族用户说，登录不上我们的应用；我听到这个问题，很自信的回复他，肯定是用户的网络有问题，最多是后端的接口挂了，和app 没有关系。但是bugly上看了一下，突然发现有个bug
-IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$B">
+<meta property="og:description" content="运营同事反馈说，有不止一个魅族用户说，登录不上我们的应用；我听到这个问题，很自信的回复他，肯定是用户的网络有问题，最多是后端的接口挂了，和app 没有关系。但是bugly上看了一下，突然发现有个bug IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$B">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-06-13T09:51:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OkHttp header 中不能传中文的坑">
-<meta name="twitter:description" content="运营同事反馈说，有不止一个魅族用户说，登录不上我们的应用；我听到这个问题，很自信的回复他，肯定是用户的网络有问题，最多是后端的接口挂了，和app 没有关系。但是bugly上看了一下，突然发现有个bug
-IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$B">
+<meta name="twitter:description" content="运营同事反馈说，有不止一个魅族用户说，登录不上我们的应用；我听到这个问题，很自信的回复他，肯定是用户的网络有问题，最多是后端的接口挂了，和app 没有关系。但是bugly上看了一下，突然发现有个bug IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$B">
 
 
 
@@ -124,7 +123,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
 
 
 
-  <link rel="canonical" href="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/"/>
+  <link rel="canonical" href="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/">
 
 
 
@@ -169,7 +168,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">进击的小羊</span>
       <span class="logo-line-after"><i></i></span>
@@ -198,7 +197,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -208,7 +207,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -218,7 +217,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -228,7 +227,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
         <li class="menu-item menu-item-schedule">
           <a href="/schedule" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
             
             日程
           </a>
@@ -238,7 +237,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
         <li class="menu-item menu-item-history">
           <a href="/history" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             作品
           </a>
@@ -248,7 +247,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -287,14 +286,14 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="进击的小羊">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="/favicon.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="进击的小羊">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src>
     </span>
   </span>
 
@@ -383,7 +382,7 @@ IllegalArgumentException: Unexpected char ... in header value: ... at com.square
 <pre><code>IllegalArgumentException: Unexpected char ... in header value: ... at com.squareup.okhttp.Headers$Builder.checkNameAndValue (Headers.java:295)
 </code></pre><p>我赶紧到魅族官方网站上下载了新春特别版的Rom，安装，打开，果然网络请求失败，崩溃了.</p>
 <pre><code>问题是这样的，我们的UA中存在上传手机系统版本号的字段：android.os.Build.DISPLAY，这个本无问题，但是魅族春节的时候发了一个新春特别版本，他的系统版本号为：Flyme OS 5.1.3.0A 新春特别版.
-</code></pre><p>这个锅我不能接，赶紧查了okhttp的<a href="https://github.com/square/okhttp/issues/2016" target="_blank" rel="external">issues</a><br>有个印度哥哥说：</p>
+</code></pre><p>这个锅我不能接，赶紧查了okhttp的<a href="https://github.com/square/okhttp/issues/2016" target="_blank" rel="noopener">issues</a><br>有个印度哥哥说：</p>
 <pre><code>Non-ASCII characters are allowed according to both the original and updated HTTP 1.1 specs.
 
 The updated spec recommends against using non-ASCII characters for newly-defined headers, but clearly they&apos;re allowed:
@@ -395,7 +394,7 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
 </code></pre><p>用了那么久的OkHttp，第一次知道这个坑，望各位绕过，但是能看到这篇bolg的应该已经中招了，下面怎么解决尼？</p>
 <p> <strong>避免出现中文</strong></p>
 <p>我的解决方式:</p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String getOsDisplay() &#123;</div><div class="line">       String osStr = StringUtil.removeSpace(android.os.Build.DISPLAY);</div><div class="line">       <span class="keyword">if</span> (osStr.length() &lt; osStr.getBytes().length) &#123;</div><div class="line">           <span class="keyword">try</span> &#123;</div><div class="line">               <span class="keyword">return</span> URLEncoder.encode(StringUtil.removeSpace(android.os.Build.DISPLAY), <span class="string">"UTF-8"</span>);</div><div class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">               e.printStackTrace();</div><div class="line">               <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">           &#125;</div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           <span class="keyword">return</span> osStr;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">String</span> <span class="title">getOsDisplay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">String</span> osStr = StringUtil.removeSpace(android.os.Build.DISPLAY);</span><br><span class="line">       <span class="keyword">if</span> (osStr.length() &lt; osStr.getBytes().length) &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">return</span> URLEncoder.encode(StringUtil.removeSpace(android.os.Build.DISPLAY), <span class="string">"UTF-8"</span>);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">               <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> osStr;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -454,12 +453,9 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/24/OkHttp-header-中不能传中文的坑/"
-     data-title="OkHttp header 中不能传中文的坑"
-     data-content=""
-     data-url="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/">
+        <div class="ds-share flat" data-thread-key="2016/02/24/OkHttp-header-中不能传中文的坑/" data-title="OkHttp header 中不能传中文的坑" data-content data-url="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -484,8 +480,7 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/24/OkHttp-header-中不能传中文的坑/"
-           data-title="OkHttp header 中不能传中文的坑" data-url="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/">
+      <div class="ds-thread" data-thread-key="2016/02/24/OkHttp-header-中不能传中文的坑/" data-title="OkHttp header 中不能传中文的坑" data-url="http://xujinyang.github.io/2016/02/24/OkHttp-header-中不能传中文的坑/">
       </div>
     
   </div>
@@ -512,9 +507,7 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/favicon.jpg"
-               alt="进击的小羊" />
+          <img class="site-author-image" itemprop="image" src="/favicon.jpg" alt="进击的小羊">
           <p class="site-author-name" itemprop="name">进击的小羊</p>
           <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
         </div>
@@ -523,7 +516,7 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -541,7 +534,7 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -620,10 +613,10 @@ Because of the way UTF-8 is encoded, all codepoints above 127 are composed of by
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,43 +63,38 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android React-Native" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Android React-Native">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="在React-native升级到0.30的时候，打包bundle，发现多了一个文件index.android.bundle.meta，不知道是做什么用的，文档里面也没有找到相关的解释，打开发现就是一串编码过后的字符串,从meta的意思：变化来看，感觉是类似md5的文件标识,但是不能确定。
-问了很多大神，都没有答案，所以试着自己去探索一下。
-因为之前解析过React-native 源码，所以我事先知">
+<meta name="description" content="在React-native升级到0.30的时候，打包bundle，发现多了一个文件index.android.bundle.meta，不知道是做什么用的，文档里面也没有找到相关的解释，打开发现就是一串编码过后的字符串,从meta的意思：变化来看，感觉是类似md5的文件标识,但是不能确定。 问了很多大神，都没有答案，所以试着自己去探索一下。 因为之前解析过React-native 源码，所以我事先知">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React-Native打包index.android.bundle.meta到底是什么?">
 <meta property="og:url" content="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/index.html">
 <meta property="og:site_name" content="进击的小羊">
-<meta property="og:description" content="在React-native升级到0.30的时候，打包bundle，发现多了一个文件index.android.bundle.meta，不知道是做什么用的，文档里面也没有找到相关的解释，打开发现就是一串编码过后的字符串,从meta的意思：变化来看，感觉是类似md5的文件标识,但是不能确定。
-问了很多大神，都没有答案，所以试着自己去探索一下。
-因为之前解析过React-native 源码，所以我事先知">
+<meta property="og:description" content="在React-native升级到0.30的时候，打包bundle，发现多了一个文件index.android.bundle.meta，不知道是做什么用的，文档里面也没有找到相关的解释，打开发现就是一串编码过后的字符串,从meta的意思：变化来看，感觉是类似md5的文件标识,但是不能确定。 问了很多大神，都没有答案，所以试着自己去探索一下。 因为之前解析过React-native 源码，所以我事先知">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-09-19T07:00:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React-Native打包index.android.bundle.meta到底是什么?">
-<meta name="twitter:description" content="在React-native升级到0.30的时候，打包bundle，发现多了一个文件index.android.bundle.meta，不知道是做什么用的，文档里面也没有找到相关的解释，打开发现就是一串编码过后的字符串,从meta的意思：变化来看，感觉是类似md5的文件标识,但是不能确定。
-问了很多大神，都没有答案，所以试着自己去探索一下。
-因为之前解析过React-native 源码，所以我事先知">
+<meta name="twitter:description" content="在React-native升级到0.30的时候，打包bundle，发现多了一个文件index.android.bundle.meta，不知道是做什么用的，文档里面也没有找到相关的解释，打开发现就是一串编码过后的字符串,从meta的意思：变化来看，感觉是类似md5的文件标识,但是不能确定。 问了很多大神，都没有答案，所以试着自己去探索一下。 因为之前解析过React-native 源码，所以我事先知">
 
 
 
@@ -127,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/"/>
+  <link rel="canonical" href="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/">
 
 
 
@@ -172,7 +167,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">进击的小羊</span>
       <span class="logo-line-after"><i></i></span>
@@ -201,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -211,7 +206,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -221,7 +216,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -231,7 +226,7 @@
         <li class="menu-item menu-item-schedule">
           <a href="/schedule" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
             
             日程
           </a>
@@ -241,7 +236,7 @@
         <li class="menu-item menu-item-history">
           <a href="/history" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             作品
           </a>
@@ -251,7 +246,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -290,14 +285,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="进击的小羊">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="/favicon.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="进击的小羊">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src>
     </span>
   </span>
 
@@ -400,14 +395,14 @@ generate              logIOS                wrong-react-native.js
   --assets-dest ../app/src/main/res/
 </code></pre><p>bundle也是个文件夹，打包相关的命令应该就在他下面了</p>
 <p>进去react-native/node_modules/react-native/local-cli/bundle/bundle.js </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> buildBundle = <span class="built_in">require</span>(<span class="string">'./buildBundle'</span>);</div><div class="line"><span class="keyword">const</span> outputBundle = <span class="built_in">require</span>(<span class="string">'./output/bundle'</span>);</div><div class="line"><span class="keyword">const</span> outputPrepack = <span class="built_in">require</span>(<span class="string">'./output/prepack'</span>);</div><div class="line"><span class="keyword">const</span> bundleCommandLineArgs = <span class="built_in">require</span>(<span class="string">'./bundleCommandLineArgs'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bundleWithOutput</span>(<span class="params">argv, config, args, output, packagerInstance</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!output) &#123;</div><div class="line">    output = args.prepack ? outputPrepack : outputBundle;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> buildBundle(args, config, output, packagerInstance);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bundle</span>(<span class="params">argv, config, args, packagerInstance</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> bundleWithOutput(argv, config, args, <span class="literal">undefined</span>, packagerInstance);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'bundle'</span>,</div><div class="line">  <span class="attr">description</span>: <span class="string">'builds the javascript bundle for offline use'</span>,</div><div class="line">  <span class="attr">func</span>: bundle,</div><div class="line">  <span class="attr">options</span>: bundleCommandLineArgs,</div><div class="line"></div><div class="line">  <span class="comment">// not used by the CLI itself</span></div><div class="line">  withOutput: bundleWithOutput,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> buildBundle = <span class="built_in">require</span>(<span class="string">'./buildBundle'</span>);</span><br><span class="line"><span class="keyword">const</span> outputBundle = <span class="built_in">require</span>(<span class="string">'./output/bundle'</span>);</span><br><span class="line"><span class="keyword">const</span> outputPrepack = <span class="built_in">require</span>(<span class="string">'./output/prepack'</span>);</span><br><span class="line"><span class="keyword">const</span> bundleCommandLineArgs = <span class="built_in">require</span>(<span class="string">'./bundleCommandLineArgs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bundleWithOutput</span>(<span class="params">argv, config, args, output, packagerInstance</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!output) &#123;</span><br><span class="line">    output = args.prepack ? outputPrepack : outputBundle;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> buildBundle(args, config, output, packagerInstance);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bundle</span>(<span class="params">argv, config, args, packagerInstance</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> bundleWithOutput(argv, config, args, <span class="literal">undefined</span>, packagerInstance);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  name: <span class="string">'bundle'</span>,</span><br><span class="line">  description: <span class="string">'builds the javascript bundle for offline use'</span>,</span><br><span class="line">  func: bundle,</span><br><span class="line">  options: bundleCommandLineArgs,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// not used by the CLI itself</span></span><br><span class="line">  withOutput: bundleWithOutput,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>恩，js代码能看懂，bundle-》bundleWithOutput-》buildBundle,方法链跳到了buildBundle.js中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildBundle</span>(<span class="params">args, config, output = outputBundle, packagerInstance</span>) </span>&#123;</div><div class="line">	...</div><div class="line">  const bundlePromise = output.build(packagerInstance, requestOpts)</div><div class="line">    .then(<span class="function"><span class="params">bundle</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span> (shouldClosePackager) &#123;</div><div class="line">        packagerInstance.end();</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> saveBundle(output, bundle, args);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">  <span class="comment">// Save the assets of the bundle</span></div><div class="line">  <span class="keyword">const</span> assets = bundlePromise</div><div class="line">    .then(<span class="function"><span class="params">bundle</span> =&gt;</span> bundle.getAssets())</div><div class="line">    .then(<span class="function"><span class="params">outputAssets</span> =&gt;</span> saveAssets(</div><div class="line">      outputAssets,</div><div class="line">      args.platform,</div><div class="line">      args.assetsDest,</div><div class="line">    ));</div><div class="line"></div><div class="line">  <span class="comment">// When we're done saving bundle output and the assets, we're done.</span></div><div class="line">  <span class="keyword">return</span> assets;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildBundle</span>(<span class="params">args, config, output = outputBundle, packagerInstance</span>) </span>&#123;</span><br><span class="line">	...</span><br><span class="line">  <span class="keyword">const</span> bundlePromise = output.build(packagerInstance, requestOpts)</span><br><span class="line">    .then(<span class="function"><span class="params">bundle</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (shouldClosePackager) &#123;</span><br><span class="line">        packagerInstance.end();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> saveBundle(output, bundle, args);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Save the assets of the bundle</span></span><br><span class="line">  <span class="keyword">const</span> assets = bundlePromise</span><br><span class="line">    .then(<span class="function"><span class="params">bundle</span> =&gt;</span> bundle.getAssets())</span><br><span class="line">    .then(<span class="function"><span class="params">outputAssets</span> =&gt;</span> saveAssets(</span><br><span class="line">      outputAssets,</span><br><span class="line">      args.platform,</span><br><span class="line">      args.assetsDest,</span><br><span class="line">    ));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// When we're done saving bundle output and the assets, we're done.</span></span><br><span class="line">  <span class="keyword">return</span> assets;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里有俩个promise,一个是build&amp;save 还有一个saveAssets,看到这个就知道我们应该找对了，bundle文件是保存在assets下面的，这里我们的目的是看meta文件是怎么生成的，所以忽略其他细节，有兴趣的朋友自己去查看，代码很简单。</p>
 <p>继续./output/bundle.build 方法下面</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">function saveBundleAndMap(bundle, options, <span class="built_in">log</span>) &#123;</div><div class="line">  <span class="keyword">const</span> &#123;</div><div class="line">    bundleOutput,</div><div class="line">    bundleEncoding: encoding,</div><div class="line">    dev,</div><div class="line">    sourcemapOutput</div><div class="line">  &#125; = options<span class="comment">;</span></div><div class="line"></div><div class="line">  <span class="built_in">log</span>(<span class="string">'start'</span>)<span class="comment">;</span></div><div class="line">  <span class="keyword">const</span> codeWithMap = createCodeWithMap(bundle, dev)<span class="comment">;</span></div><div class="line">  <span class="built_in">log</span>(<span class="string">'finish'</span>)<span class="comment">;</span></div><div class="line"></div><div class="line">  <span class="built_in">log</span>(<span class="string">'Writing bundle output to:'</span>, bundleOutput)<span class="comment">;</span></div><div class="line"></div><div class="line">  <span class="keyword">const</span> &#123;code&#125; = codeWithMap<span class="comment">;</span></div><div class="line">  <span class="keyword">const</span> writeBundle = writeFile(bundleOutput, code, encoding)<span class="comment">;</span></div><div class="line">  <span class="keyword">const</span> writeMetadata = writeFile(</div><div class="line">    bundleOutput + <span class="string">'.meta'</span>,</div><div class="line">    meta(code, encoding),</div><div class="line">    <span class="string">'binary'</span>)<span class="comment">;</span></div><div class="line">  Promise.all([writeBundle, writeMetadata])</div><div class="line">    .<span class="keyword">then</span>(() =&gt; <span class="built_in">log</span>(<span class="string">'Done writing bundle output'</span>))<span class="comment">;</span></div><div class="line"></div><div class="line">  <span class="keyword">if</span> (sourcemapOutput) &#123;</div><div class="line">    <span class="built_in">log</span>(<span class="string">'Writing sourcemap output to:'</span>, sourcemapOutput)<span class="comment">;</span></div><div class="line">    <span class="keyword">const</span> writeMap = writeFile(sourcemapOutput, codeWithMap.map, <span class="literal">null</span>)<span class="comment">;</span></div><div class="line">    writeMap.<span class="keyword">then</span>(() =&gt; <span class="built_in">log</span>(<span class="string">'Done writing sourcemap output'</span>))<span class="comment">;</span></div><div class="line">    <span class="keyword">return</span> Promise.all([writeBundle, writeMetadata, writeMap])<span class="comment">;</span></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">return</span> writeBundle<span class="comment">;</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveBundleAndMap</span>(<span class="params">bundle, options, log</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;</span><br><span class="line">    bundleOutput,</span><br><span class="line">    bundleEncoding: encoding,</span><br><span class="line">    dev,</span><br><span class="line">    sourcemapOutput</span><br><span class="line">  &#125; = options;</span><br><span class="line"></span><br><span class="line">  log(<span class="string">'start'</span>);</span><br><span class="line">  <span class="keyword">const</span> codeWithMap = createCodeWithMap(bundle, dev);</span><br><span class="line">  log(<span class="string">'finish'</span>);</span><br><span class="line"></span><br><span class="line">  log(<span class="string">'Writing bundle output to:'</span>, bundleOutput);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123;code&#125; = codeWithMap;</span><br><span class="line">  <span class="keyword">const</span> writeBundle = writeFile(bundleOutput, code, encoding);</span><br><span class="line">  <span class="keyword">const</span> writeMetadata = writeFile(</span><br><span class="line">    bundleOutput + <span class="string">'.meta'</span>,</span><br><span class="line">    meta(code, encoding),</span><br><span class="line">    <span class="string">'binary'</span>);</span><br><span class="line">  <span class="built_in">Promise</span>.all([writeBundle, writeMetadata])</span><br><span class="line">    .then(<span class="function"><span class="params">()</span> =&gt;</span> log(<span class="string">'Done writing bundle output'</span>));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (sourcemapOutput) &#123;</span><br><span class="line">    log(<span class="string">'Writing sourcemap output to:'</span>, sourcemapOutput);</span><br><span class="line">    <span class="keyword">const</span> writeMap = writeFile(sourcemapOutput, codeWithMap.map, <span class="literal">null</span>);</span><br><span class="line">    writeMap.then(<span class="function"><span class="params">()</span> =&gt;</span> log(<span class="string">'Done writing sourcemap output'</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([writeBundle, writeMetadata, writeMap]);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> writeBundle;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>眼尖的同学已经发现了.meta生成的代码，writeFile</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeFile</span>(<span class="params">file, data, encoding</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    fs.writeFile(</div><div class="line">      file,</div><div class="line">      data,</div><div class="line">      encoding,</div><div class="line">      error =&gt; error ? reject(error) : resolve()</div><div class="line">    );</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">writeFile</span>(<span class="params">file, data, encoding</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    fs.writeFile(</span><br><span class="line">      file,</span><br><span class="line">      data,</span><br><span class="line">      encoding,</span><br><span class="line">      error =&gt; error ? reject(error) : resolve()</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>将data用encoding编码写到file文件中，</p>
 <pre><code>const writeMetadata = writeFile(
   bundleOutput + &apos;.meta&apos;,
@@ -419,7 +414,7 @@ generate              logIOS                wrong-react-native.js
 <li>encoding 是binary 二进制</li>
 </ul>
 <p>忽略code是什么，先看一下meta方法做了什么</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">code, encoding</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> hash = crypto.createHash(<span class="string">'sha1'</span>);</div><div class="line">  hash.update(code, encoding);</div><div class="line">  <span class="keyword">const</span> digest = hash.digest(<span class="string">'binary'</span>);</div><div class="line">  <span class="keyword">const</span> signature = Buffer(digest.length + <span class="number">1</span>);</div><div class="line">  signature.write(digest, <span class="string">'binary'</span>);</div><div class="line">  signature.writeUInt8(</div><div class="line">    constantFor(tryAsciiPromotion(code, encoding)),</div><div class="line">    signature.length - <span class="number">1</span>);</div><div class="line">  <span class="keyword">return</span> signature;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">code, encoding</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> hash = crypto.createHash(<span class="string">'sha1'</span>);</span><br><span class="line">  hash.update(code, encoding);</span><br><span class="line">  <span class="keyword">const</span> digest = hash.digest(<span class="string">'binary'</span>);</span><br><span class="line">  <span class="keyword">const</span> signature = Buffer(digest.length + <span class="number">1</span>);</span><br><span class="line">  signature.write(digest, <span class="string">'binary'</span>);</span><br><span class="line">  signature.writeUInt8(</span><br><span class="line">    constantFor(tryAsciiPromotion(code, encoding)),</span><br><span class="line">    signature.length - <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> signature;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>先算出code的sha1，然后用binary编码</p>
 <p>虽然和我们之前想的md5算法有差别，但是作用都是一样的，</p>
 <p>再回去找一下code是什么，一番跳转，发现code就是bundle.getSource({dev})，也就是bundle中的内容</p>
@@ -480,12 +475,9 @@ generate              logIOS                wrong-react-native.js
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/19/React-Native打包index-android-bundle-meta到底是什么/"
-     data-title="React-Native打包index.android.bundle.meta到底是什么?"
-     data-content=""
-     data-url="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/">
+        <div class="ds-share flat" data-thread-key="2016/09/19/React-Native打包index-android-bundle-meta到底是什么/" data-title="React-Native打包index.android.bundle.meta到底是什么?" data-content data-url="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -510,8 +502,7 @@ generate              logIOS                wrong-react-native.js
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/19/React-Native打包index-android-bundle-meta到底是什么/"
-           data-title="React-Native打包index.android.bundle.meta到底是什么?" data-url="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/">
+      <div class="ds-thread" data-thread-key="2016/09/19/React-Native打包index-android-bundle-meta到底是什么/" data-title="React-Native打包index.android.bundle.meta到底是什么?" data-url="http://xujinyang.github.io/2016/09/19/React-Native打包index-android-bundle-meta到底是什么/">
       </div>
     
   </div>
@@ -538,9 +529,7 @@ generate              logIOS                wrong-react-native.js
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/favicon.jpg"
-               alt="进击的小羊" />
+          <img class="site-author-image" itemprop="image" src="/favicon.jpg" alt="进击的小羊">
           <p class="site-author-name" itemprop="name">进击的小羊</p>
           <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
         </div>
@@ -549,7 +538,7 @@ generate              logIOS                wrong-react-native.js
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +556,7 @@ generate              logIOS                wrong-react-native.js
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -646,10 +635,10 @@ generate              logIOS                wrong-react-native.js
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

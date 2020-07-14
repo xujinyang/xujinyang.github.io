@@ -6,15 +6,15 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,40 +63,38 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android React-Native" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Android React-Native">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
 
 
 
 
 
 
-<meta name="description" content="自定义LinearLayout的时候有三个构造方法
-123456789101112131415public OrderDetailView(Context context) &amp;#123;       super(context);       init(context);   &amp;#125;   public OrderDetailView(Context context, AttributeSet">
+<meta name="description" content="自定义LinearLayout的时候有三个构造方法 123456789101112131415public OrderDetailView(Context context) &amp;#123;       super(context);       init(context);   &amp;#125;   public OrderDetailView(Context context, AttributeSet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View在Android2.x上的坑">
 <meta property="og:url" content="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/index.html">
 <meta property="og:site_name" content="进击的小羊">
-<meta property="og:description" content="自定义LinearLayout的时候有三个构造方法
-123456789101112131415public OrderDetailView(Context context) &amp;#123;       super(context);       init(context);   &amp;#125;   public OrderDetailView(Context context, AttributeSet">
+<meta property="og:description" content="自定义LinearLayout的时候有三个构造方法 123456789101112131415public OrderDetailView(Context context) &amp;#123;       super(context);       init(context);   &amp;#125;   public OrderDetailView(Context context, AttributeSet">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2016-06-13T09:51:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View在Android2.x上的坑">
-<meta name="twitter:description" content="自定义LinearLayout的时候有三个构造方法
-123456789101112131415public OrderDetailView(Context context) &amp;#123;       super(context);       init(context);   &amp;#125;   public OrderDetailView(Context context, AttributeSet">
+<meta name="twitter:description" content="自定义LinearLayout的时候有三个构造方法 123456789101112131415public OrderDetailView(Context context) &amp;#123;       super(context);       init(context);   &amp;#125;   public OrderDetailView(Context context, AttributeSet">
 
 
 
@@ -124,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/"/>
+  <link rel="canonical" href="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/">
 
 
 
@@ -169,7 +167,7 @@
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">进击的小羊</span>
       <span class="logo-line-after"><i></i></span>
@@ -198,7 +196,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -208,7 +206,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -218,7 +216,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -228,7 +226,7 @@
         <li class="menu-item menu-item-schedule">
           <a href="/schedule" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
             
             日程
           </a>
@@ -238,7 +236,7 @@
         <li class="menu-item menu-item-history">
           <a href="/history" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             作品
           </a>
@@ -248,7 +246,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -287,14 +285,14 @@
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="进击的小羊">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content>
     <meta itemprop="image" content="/favicon.jpg">
   </span>
 
   <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="进击的小羊">
     <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="进击的小羊" src="">
+      <img style="display:none;" itemprop="url image" alt="进击的小羊" src>
     </span>
   </span>
 
@@ -333,7 +331,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -402,9 +400,9 @@
 
       
         <p>自定义LinearLayout的时候有三个构造方法</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public <span class="keyword">OrderDetailView(Context </span><span class="built_in">context</span>) &#123;</div><div class="line">       super(<span class="built_in">context</span>)<span class="comment">;</span></div><div class="line">       init(<span class="built_in">context</span>)<span class="comment">;</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   public <span class="keyword">OrderDetailView(Context </span><span class="built_in">context</span>, AttributeSet attrs) &#123;</div><div class="line">       super(<span class="built_in">context</span>, attrs)<span class="comment">;</span></div><div class="line">       init(<span class="built_in">context</span>)<span class="comment">;</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   public <span class="keyword">OrderDetailView(Context </span><span class="built_in">context</span>, AttributeSet attrs, int defStyle) &#123;</div><div class="line">       super(<span class="built_in">context</span>, attrs, defStyle)<span class="comment">;</span></div><div class="line">       init(<span class="built_in">context</span>)<span class="comment">;</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public OrderDetailView(Context <span class="keyword">context</span>) &#123;</span><br><span class="line">       <span class="keyword">super</span>(<span class="keyword">context</span>);</span><br><span class="line">       init(<span class="keyword">context</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public OrderDetailView(Context <span class="keyword">context</span>, AttributeSet attrs) &#123;</span><br><span class="line">       <span class="keyword">super</span>(<span class="keyword">context</span>, attrs);</span><br><span class="line">       init(<span class="keyword">context</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public OrderDetailView(Context <span class="keyword">context</span>, AttributeSet attrs, <span class="keyword">int</span> defStyle) &#123;</span><br><span class="line">       <span class="keyword">super</span>(<span class="keyword">context</span>, attrs, defStyle);</span><br><span class="line">       init(<span class="keyword">context</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>很常识的事情，但是如果你写成下面这样</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public <span class="keyword">OrderDetailView(Context </span><span class="built_in">context</span>) &#123;</div><div class="line">       this(<span class="built_in">context</span>,null)<span class="comment">;</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   public <span class="keyword">OrderDetailView(Context </span><span class="built_in">context</span>, AttributeSet attrs) &#123;</div><div class="line">       this(<span class="built_in">context</span>, attrs,<span class="number">0</span>)<span class="comment">;</span></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   public <span class="keyword">OrderDetailView(Context </span><span class="built_in">context</span>, AttributeSet attrs, int defStyle) &#123;</div><div class="line">       super(<span class="built_in">context</span>, attrs, defStyle)<span class="comment">;</span></div><div class="line">       init(<span class="built_in">context</span>)<span class="comment">;</span></div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public OrderDetailView(Context <span class="keyword">context</span>) &#123;</span><br><span class="line">       <span class="keyword">this</span>(<span class="keyword">context</span>,<span class="literal">null</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public OrderDetailView(Context <span class="keyword">context</span>, AttributeSet attrs) &#123;</span><br><span class="line">       <span class="keyword">this</span>(<span class="keyword">context</span>, attrs,<span class="number">0</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public OrderDetailView(Context <span class="keyword">context</span>, AttributeSet attrs, <span class="keyword">int</span> defStyle) &#123;</span><br><span class="line">       <span class="keyword">super</span>(<span class="keyword">context</span>, attrs, defStyle);</span><br><span class="line">       init(<span class="keyword">context</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>在Android3.0以上没有任何问题，但是3.0以下奇怪的事情发生了，应用直接crash，查了发现,android2.x的sdk中没有三个参数的构造方法，如果用代码生成控件会调用一个参数的构造方法，用布局生成的控件会调用俩个参数的构造方法，三个参数的构造方法是3.0以上的系统在两个构造方法中主动调用才能执行的，这个坑踩过的人才会知道，没踩过的看到就不要踩了。</p>
 
       
@@ -459,12 +457,9 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/"
-     data-title="自定义View在Android2.x上的坑"
-     data-content=""
-     data-url="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/">
+        <div class="ds-share flat" data-thread-key="2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/" data-title="自定义View在Android2.x上的坑" data-content data-url="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -489,8 +484,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/"
-           data-title="自定义View在Android2.x上的坑" data-url="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/">
+      <div class="ds-thread" data-thread-key="2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/" data-title="自定义View在Android2.x上的坑" data-url="http://xujinyang.github.io/2014/10/24/2014-10-24-zi-ding-yi-viewzai-android2-dot-xshang-de-zhu-yi-dian/">
       </div>
     
   </div>
@@ -517,9 +511,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/favicon.jpg"
-               alt="进击的小羊" />
+          <img class="site-author-image" itemprop="image" src="/favicon.jpg" alt="进击的小羊">
           <p class="site-author-name" itemprop="name">进击的小羊</p>
           <p class="site-description motion-element" itemprop="description">饿了么Android开发</p>
         </div>
@@ -528,7 +520,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">56</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -546,7 +538,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -625,10 +617,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
